@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpcjdcnmlpdpb"]
+
+[ext_resource type="Script" uid="uid://d3ha2e0rbrexn" path="res://jugador.gd" id="1_16k11"]
+[ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_omvyu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8o684"]
+size = Vector2(128, 128)
+
+[node name="Jugador" type="CharacterBody2D"]
+script = ExtResource("1_16k11")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, 2.38419e-07)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_omvyu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_8o684")
+
+[node name="Arma" type="Node2D" parent="."]
+position = Vector2(40, 0)
+
+[node name="cooldown" type="Timer" parent="Arma"]
+
+[connection signal="timeout" from="Arma/cooldown" to="." method="_on_cooldown_timeout"]
