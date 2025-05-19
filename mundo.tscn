@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs80h6pf4qjk"]
+
+[ext_resource type="Script" uid="uid://qgt7qrtq22rj" path="res://mundo.gd" id="1_6ba58"]
+
+[node name="Mundo" type="Node2D"]
+script = ExtResource("1_6ba58")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Colision del Mapa" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-339, -477.264)
+scale = Vector2(1.32251, 2.47051)
+polygon = PackedVector2Array(256.331, 193.184, 1224.19, 193.184, 1224.19, 484.622, 1218.14, 484.622, 1218.14, 270.901, 262.38, 270.901, 262.38, 481.384, 1218.14, 481.384, 1218.14, 484.622, 256.331, 484.622)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/Colision del Mapa"]

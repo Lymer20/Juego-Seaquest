@@ -10,10 +10,21 @@ config_version=5
 
 [application]
 
-config/name="proyectoElectiva"
+config/name="Proyecto Electiva Lymer y Fernando"
+run/main_scene="uid://bs80h6pf4qjk"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
+[layer_names]
+
+2d_physics/layer_1="World"
+
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
