@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cclgqepf0v7oj"]
 
-[ext_resource type="Script" uid="uid://dfo1fpypsope" path="res://oleada.gd" id="1_35g8r"]
+[ext_resource type="Script" uid="uid://dfo1fpypsope" path="res://entities/enemies/oleada.gd" id="1_35g8r"]
 [ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_ubxte"]
 
 [node name="Node2D" type="Node2D"]
@@ -9,5 +9,5 @@ script = ExtResource("1_35g8r")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(357, 288)
+position = Vector2(-64, 381)
 texture = ExtResource("2_ubxte")

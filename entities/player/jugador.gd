@@ -6,7 +6,7 @@ const aceleracion: float = 900
 const friccion: float = 1200
 
 # Disparo
-var bala_path=preload("res://bala.tscn")
+var bala_path=preload("res://entities/player/bala.tscn")
 # Cooldown del disparo
 var shoot: bool = true
 @onready var cooldown: Timer = $Arma/cooldown

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bs80h6pf4qjk"]
 
-[ext_resource type="Script" uid="uid://qgt7qrtq22rj" path="res://mundo.gd" id="1_6ba58"]
-[ext_resource type="PackedScene" uid="uid://cpcjdcnmlpdpb" path="res://jugador.tscn" id="2_lgngo"]
+[ext_resource type="Script" uid="uid://qgt7qrtq22rj" path="res://world/mundo.gd" id="1_6ba58"]
+[ext_resource type="PackedScene" uid="uid://cpcjdcnmlpdpb" path="res://entities/player/jugador.tscn" id="2_lgngo"]
 
 [node name="Mundo" type="Node2D"]
 script = ExtResource("1_6ba58")
