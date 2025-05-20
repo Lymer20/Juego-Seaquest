@@ -10,12 +10,10 @@ size = Vector2(128, 128)
 size = Vector2(64, 64)
 
 [node name="Jugador" type="CharacterBody2D"]
-position = Vector2(1, 0)
 collision_layer = 2
 script = ExtResource("1_16k11")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.38419e-07, 2.38419e-07)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_omvyu")
 
@@ -30,7 +28,6 @@ shape = SubResource("RectangleShape2D_f7wae")
 debug_color = Color(0.884748, 0.00031054, 0.809704, 0.42)
 
 [node name="Arma" type="Node2D" parent="."]
-position = Vector2(40, 0)
 
 [node name="cooldown" type="Timer" parent="Arma"]
 
