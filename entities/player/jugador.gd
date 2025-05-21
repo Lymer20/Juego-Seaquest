@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 # Movimiento
 const velocidad_max: float = 300
 const aceleracion: float = 900
@@ -8,6 +10,7 @@ const friccion: float = 1200
 var salvados: int = 1
 
 # Disparo
+@onready var arma: Node2D = $Arma
 var bala_path=preload("res://entities/player/bala.tscn")
 
 # Cooldown del disparo
@@ -20,6 +23,7 @@ func _physics_process(delta: float) -> void:
 	# Estas variables detectan movimiento en X y en Y
 	var movimiento_x := Input.get_axis("izquierda", "derecha")
 	var movimiento_y := Input.get_axis("arriba", "abajo")
+	
 	# Movimiento en X
 	if movimiento_x:
 		velocity.x = move_toward(velocity.x, movimiento_x * velocidad_max, aceleracion * delta)
