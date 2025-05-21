@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs80h6pf4qjk"]
+[gd_scene load_steps=4 format=3 uid="uid://bs80h6pf4qjk"]
 
 [ext_resource type="Script" uid="uid://qgt7qrtq22rj" path="res://world/mundo.gd" id="1_6ba58"]
 [ext_resource type="PackedScene" uid="uid://cpcjdcnmlpdpb" path="res://entities/player/jugador.tscn" id="2_lgngo"]
-[ext_resource type="PackedScene" uid="uid://cwmpvj0whpvbv" path="res://hurt_test.tscn" id="3_ltsvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltsvv"]
-size = Vector2(1280, 48)
+size = Vector2(1280, 16)
 
 [node name="Mundo" type="Node2D"]
 script = ExtResource("1_6ba58")
@@ -15,7 +14,7 @@ script = ExtResource("1_6ba58")
 [node name="Colision del Mapa" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(-346, -477.264)
 scale = Vector2(1.32251, 2.47051)
-polygon = PackedVector2Array(261.624, 193.184, 1229.48, 193.184, 1229.48, 484.622, 1223.43, 484.622, 1223.43, 264.425, 267.673, 264.425, 267.673, 481.384, 1223.43, 481.384, 1223.43, 484.622, 261.624, 484.622)
+polygon = PackedVector2Array(261.624, 193.184, 1229.48, 193.184, 1229.48, 484.622, 1223.43, 484.622, 1223.43, 257.948, 267.673, 257.948, 267.673, 419.858, 1223.43, 419.858, 1223.43, 484.622, 261.624, 484.622)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/Colision del Mapa"]
 visible = false
@@ -23,18 +22,15 @@ visible = false
 [node name="Jugador" parent="." instance=ExtResource("2_lgngo")]
 position = Vector2(648, 457)
 
-[node name="Hurt_Test" parent="." instance=ExtResource("3_ltsvv")]
-position = Vector2(1152, 459)
-
 [node name="oxigeno" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="oxigeno"]
-position = Vector2(640, 192)
+position = Vector2(640, 168)
 shape = SubResource("RectangleShape2D_ltsvv")
 debug_color = Color(0.662919, 0.513129, 0, 0.42)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="area_entered" from="oxigeno" to="." method="_on_oxigeno_area_entered"]

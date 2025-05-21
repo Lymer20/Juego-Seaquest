@@ -7,12 +7,12 @@
 script = ExtResource("1_fpd2l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(96, 416)
+position = Vector2(88, 280)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_jkpj3")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(96, 544)
+position = Vector2(88, 408)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_jkpj3")
 

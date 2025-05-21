@@ -15,8 +15,17 @@ var oleadas = [
 func spawn_random_wave():
 	var wave_scene = oleadas.pick_random()
 	var wave_instance = wave_scene.instantiate()
-	#wave_scene.position = Vector2(randf_range(100, 500), randf_range(100, 300))
+	
+	var wave_direction = (randi() % 2)
+	if wave_direction == 0:
+		wave_instance.direccion = wave_instance.direccion * -1 
+		wave_instance.position = Vector2(1280, 0)
+	else:
+		wave_instance.direccion = wave_instance.direccion
+		wave_instance.position = Vector2(0, 0)
+	
 	add_child(wave_instance)
+
 	
 #aqui se llama a la funcion random cada 3 segundos	
 func _on_timer_timeout() -> void:
@@ -24,15 +33,12 @@ func _on_timer_timeout() -> void:
 
 func _ready():
 	polygon_2d.polygon = colision_del_mapa.polygon
-	
 
-	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("revivir"):
 		for node in get_children():
 			if node.is_in_group("jugador") or node.is_in_group("enemigo"):
 				node.queue_free()
-		
 
 func _on_oxigeno_area_entered(area: Area2D) -> void:
 

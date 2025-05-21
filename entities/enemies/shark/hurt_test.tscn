@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwmpvj0whpvbv"]
 
-[ext_resource type="Script" uid="uid://dglrpf1y73x4c" path="res://world/hurt_test.gd" id="1_qt07b"]
+[ext_resource type="Script" uid="uid://dglrpf1y73x4c" path="res://entities/enemies/shark/hurt_test.gd" id="1_qt07b"]
 [ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_b28pw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rfjf"]

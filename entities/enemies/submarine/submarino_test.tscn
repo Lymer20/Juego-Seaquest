@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy30ihsq4pxtk"]
+
+[ext_resource type="Script" uid="uid://cg0heuwp1un58" path="res://entities/enemies/submarine/submarino_test.gd" id="1_2snnq"]
+[ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_3sddm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hccry"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2snnq"]
+size = Vector2(48, 48)
+
+[node name="Submarino_Test" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_2snnq")
+
+[node name="oportunidad_disparo" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_3sddm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hccry")
+debug_color = Color(0.73694, 0.468711, 9.62615e-07, 0.42)
+
+[node name="enemy_hitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitBox"]
+shape = SubResource("RectangleShape2D_2snnq")
+debug_color = Color(0.831373, 0, 0.568627, 0.203922)
+
+[node name="Arma" type="Node2D" parent="."]
+
+[connection signal="timeout" from="oportunidad_disparo" to="." method="_on_oportunidad_disparo_timeout"]
+[connection signal="area_entered" from="enemy_hitBox" to="." method="_on_enemy_s_hit_box_area_entered"]

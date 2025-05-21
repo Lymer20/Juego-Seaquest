@@ -1,6 +1,7 @@
 extends Node2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
-var velocidad = 200
+var velocidad = 150
 var direccion = 1  
 
 func _process(delta):

@@ -57,6 +57,6 @@ func _on_cooldown_timeout() -> void:
 		print("Puedes disparar!")
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.name == "enemy_hitBox":
+	if area.name == "enemy_hitBox" or area.name == "enemy_gun_hitBox":
 		print("Ohno, moriste!")
 		queue_free() # Replace with function body.
