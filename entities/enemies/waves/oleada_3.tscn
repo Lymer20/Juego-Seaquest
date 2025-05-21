@@ -30,3 +30,7 @@ texture = ExtResource("2_vshjo")
 position = Vector2(96, 672)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_vshjo")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
