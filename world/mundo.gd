@@ -27,7 +27,7 @@ func spawn_random_wave():
 	add_child(wave_instance)
 
 	
-#aqui se llama a la funcion random cada 3 segundos	
+#aqui se llama a la funcion random cada 5 segundos	
 func _on_timer_timeout() -> void:
 	spawn_random_wave()
 

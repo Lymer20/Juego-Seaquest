@@ -9,6 +9,7 @@ const friccion: float = 1200
 
 var salvados: int = 1
 
+
 # Disparo
 @onready var arma: Node2D = $Arma
 var bala_path=preload("res://entities/player/bala.tscn")
@@ -43,7 +44,8 @@ func _physics_process(delta: float) -> void:
 		cooldown.wait_time = 0.75
 		cooldown.start()
 		print("Cooldown")
-	
+		
+		
 	move_and_slide()
 
 func disparar():

@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs80h6pf4qjk"]
+[gd_scene load_steps=6 format=3 uid="uid://bs80h6pf4qjk"]
 
 [ext_resource type="Script" uid="uid://qgt7qrtq22rj" path="res://world/mundo.gd" id="1_6ba58"]
 [ext_resource type="PackedScene" uid="uid://cpcjdcnmlpdpb" path="res://entities/player/jugador.tscn" id="2_lgngo"]
+[ext_resource type="Script" uid="uid://css13cfq0ba67" path="res://world/oxigeno.gd" id="3_ltsvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltsvv"]
-size = Vector2(1280, 16)
+size = Vector2(1280, 40)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph1s7"]
+bg_color = Color(0.331893, 0.698049, 0.273888, 1)
 
 [node name="Mundo" type="Node2D"]
 script = ExtResource("1_6ba58")
@@ -20,12 +24,14 @@ polygon = PackedVector2Array(261.624, 193.184, 1229.48, 193.184, 1229.48, 484.62
 visible = false
 
 [node name="Jugador" parent="." instance=ExtResource("2_lgngo")]
-position = Vector2(648, 457)
+position = Vector2(624, 359)
 
 [node name="oxigeno" type="Area2D" parent="."]
+position = Vector2(-8, 32)
+script = ExtResource("3_ltsvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="oxigeno"]
-position = Vector2(640, 168)
+position = Vector2(648, 140)
 shape = SubResource("RectangleShape2D_ltsvv")
 debug_color = Color(0.662919, 0.513129, 0, 0.42)
 
@@ -33,6 +39,19 @@ debug_color = Color(0.662919, 0.513129, 0, 0.42)
 wait_time = 5.0
 autostart = true
 
-[connection signal="area_entered" from="oxigeno" to="." method="_on_oxigeno_area_entered"]
-[connection signal="area_exited" from="oxigeno" to="." method="_on_oxigeno_area_exited"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 512.0
+offset_top = 664.0
+offset_right = 768.0
+offset_bottom = 691.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ph1s7")
+max_value = 1.0
+value = 1.0
+
+[connection signal="area_entered" from="oxigeno" to="Jugador" method="_on_oxigeno_area_entered"]
+[connection signal="area_exited" from="oxigeno" to="Jugador" method="_on_oxigeno_area_exited"]
+[connection signal="body_entered" from="oxigeno" to="oxigeno" method="_on_body_entered"]
+[connection signal="body_exited" from="oxigeno" to="oxigeno" method="_on_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
