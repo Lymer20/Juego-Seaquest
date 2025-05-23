@@ -3,13 +3,18 @@ extends Node2D
 @onready var polygon_2d: Polygon2D = $"StaticBody2D/Colision del Mapa/Polygon2D"
 var jugador_path=preload("res://entities/player/jugador.tscn")
 var jugador = jugador_path.instantiate()
+@export var game_over: bool
 
 #oleadas
 var oleadas = [
-	preload("res://entities/enemies/waves/oleada_1.tscn"),
-	preload("res://entities/enemies/waves/oleada_2.tscn"),
-	preload("res://entities/enemies/waves/oleada_3.tscn")
+	preload("res://entities/enemies/waves/oleada_2.tscn")
 ]
+
+func jugador_muerto():
+	print(jugador.jugador_muerto)
+	if jugador.jugador_muerto == true:
+		get_node("GameOver_Canvas/GameOver").game_over()
+		print("Se cumplio la condición")
 
 #funcion que elije aleatoriamente cual oleada usar
 func spawn_random_wave():
@@ -32,22 +37,8 @@ func _on_timer_timeout() -> void:
 	spawn_random_wave()
 
 func _ready():
-	polygon_2d.polygon = colision_del_mapa.polygon
+	if game_over == true:
+		pass
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("revivir"):
-		for node in get_children():
-			if node.is_in_group("jugador") or node.is_in_group("enemigo"):
-				node.queue_free()
-
-func _on_oxigeno_area_entered(area: Area2D) -> void:
-
-	if jugador.salvados > 0:
-		print("Total de personas salvadas: " + str(jugador.salvados) + ". Se aumentará el tamaño cuando salgas para testear")
-	else:
-		print("Busca mas personas por salvar!")
-	print("¡Estas recibiendo oxígeno!")
-
-func _on_oxigeno_area_exited(area: Area2D) -> void:
-	print("¡Dejaste de recibir oxígeno!")
-	jugador.salvados = jugador.salvados + 1
+	pass

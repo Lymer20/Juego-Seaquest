@@ -15,6 +15,11 @@ run/main_scene="uid://bs80h6pf4qjk"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SaveLoad="*res://save_load.gd"
+Global_Scoreboard="*res://scoreboard.gd"
+
 [display]
 
 window/size/viewport_width=1280

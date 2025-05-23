@@ -30,7 +30,7 @@ debug_color = Color(0.884748, 0.00031054, 0.809704, 0.42)
 [node name="Arma" type="Node2D" parent="."]
 
 [node name="cooldown" type="Timer" parent="Arma"]
-wait_time = 0.25
+wait_time = 0.125
 
 [connection signal="area_entered" from="player_hurtBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Arma/cooldown" to="." method="_on_cooldown_timeout"]

@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvxcakdbbuy1p"]
+
+[ext_resource type="Script" uid="uid://c11niutqdn1jk" path="res://entities/player/game over/game_over.gd" id="1_y26ei"]
+[ext_resource type="Script" uid="uid://diq27e0peg062" path="res://world/scores/highscore.gd" id="2_yxx3c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yxx3c"]
+font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_ccer4"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_8u835"]
+font_size = 40
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y26ei")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -2.0
+offset_right = 1288.0
+offset_bottom = 726.0
+color = Color(0, 0, 0, 0.14902)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 234.0
+offset_right = 958.0
+offset_bottom = 489.0
+color = Color(0, 0, 0, 0.14902)
+
+[node name="Boton_Menu" type="Button" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_left = 676.0
+offset_top = 379.0
+offset_right = 879.0
+offset_bottom = 459.0
+text = "Menu Principal"
+
+[node name="Boton_Reiniciar" type="Button" parent="."]
+process_mode = 3
+layout_mode = 2
+offset_left = 344.0
+offset_top = 374.0
+offset_right = 547.0
+offset_bottom = 454.0
+text = "Reiniciar"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 112.0
+offset_right = 959.0
+offset_bottom = 222.0
+text = "T MORISTE CAUSA"
+label_settings = SubResource("LabelSettings_yxx3c")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 246.0
+offset_right = 641.0
+offset_bottom = 301.0
+text = "Puntaje mas alto:"
+label_settings = SubResource("LabelSettings_ccer4")
+
+[node name="Highscore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 301.0
+offset_right = 532.0
+offset_bottom = 356.0
+text = "0"
+label_settings = SubResource("LabelSettings_8u835")
+horizontal_alignment = 1
+script = ExtResource("2_yxx3c")
+
+[node name="Boton_Guardar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 698.0
+offset_top = 261.0
+offset_right = 873.0
+offset_bottom = 320.0
+text = "¿Guardar puntaje?"
+
+[connection signal="pressed" from="Boton_Menu" to="." method="_on_boton_menu_pressed"]
+[connection signal="pressed" from="Boton_Reiniciar" to="." method="_on_boton_reiniciar_pressed"]
+[connection signal="pressed" from="Boton_Guardar" to="." method="_on_boton_guardar_pressed"]

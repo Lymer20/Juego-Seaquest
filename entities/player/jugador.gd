@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
+@export var dentro_del_area = false
+var jugador_muerto: bool
+@onready var barra_oxigeno: ProgressBar = $"../Oxigeno/barra de oxigeno/ProgressBar"
+
 # Movimiento
 const velocidad_max: float = 300
 const aceleracion: float = 900
@@ -45,8 +49,10 @@ func _physics_process(delta: float) -> void:
 		cooldown.start()
 		print("Cooldown")
 		
-		
 	move_and_slide()
+	
+	if barra_oxigeno.value == 0.0:
+		death_oxygen()
 
 func disparar():
 	var bala=bala_path.instantiate()
@@ -58,7 +64,22 @@ func _on_cooldown_timeout() -> void:
 		shoot = true
 		print("Puedes disparar!")
 
+# Muertes
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" or area.name == "enemy_gun_hitBox":
+		jugador_muerto = true
+		gameover()
 		print("Ohno, moriste!")
-		queue_free() # Replace with function body.
+		queue_free()
+
+func death_oxygen():
+	if barra_oxigeno.value == 0.0:
+		jugador_muerto = true
+		gameover()
+		print("Ohno, moriste!")
+		queue_free()
+
+func gameover():
+	if jugador_muerto == true:
+		get_node("../GameOver_Canvas/GameOver").game_over()
+		print("Se cumplio la condición")

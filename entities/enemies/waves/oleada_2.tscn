@@ -1,22 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://com0op02tq480"]
+[gd_scene load_steps=2 format=3 uid="uid://com0op02tq480"]
 
 [ext_resource type="Script" uid="uid://1qg8e4c7lhmh" path="res://entities/enemies/waves/oleada_2.gd" id="1_54ggn"]
-[ext_resource type="PackedScene" uid="uid://cy30ihsq4pxtk" path="res://entities/enemies/submarine/submarino_test.tscn" id="2_54ggn"]
 
 [node name="oleada2" type="Node2D"]
 script = ExtResource("1_54ggn")
 
-[node name="Submarino_Test" parent="." instance=ExtResource("2_54ggn")]
-position = Vector2(-32, 257.25)
-
-[node name="Submarino_Test2" parent="." instance=ExtResource("2_54ggn")]
-position = Vector2(-32, 352)
-
-[node name="Submarino_Test3" parent="." instance=ExtResource("2_54ggn")]
-position = Vector2(-32, 448)
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-32, 257.25)
+position = Vector2(-32, 256)
 scale = Vector2(4, 0.125)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

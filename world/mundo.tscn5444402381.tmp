@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs80h6pf4qjk"]
+[gd_scene load_steps=9 format=3 uid="uid://bs80h6pf4qjk"]
 
 [ext_resource type="Script" uid="uid://qgt7qrtq22rj" path="res://world/mundo.gd" id="1_6ba58"]
 [ext_resource type="PackedScene" uid="uid://cpcjdcnmlpdpb" path="res://entities/player/jugador.tscn" id="2_lgngo"]
 [ext_resource type="Script" uid="uid://css13cfq0ba67" path="res://world/oxigeno.gd" id="3_ltsvv"]
-[ext_resource type="Script" uid="uid://dbq10vhocbru3" path="res://world/scores/score.gd" id="4_re12h"]
-[ext_resource type="Script" uid="uid://diq27e0peg062" path="res://world/scores/highscore.gd" id="4_t86mu"]
-[ext_resource type="PackedScene" uid="uid://bvxcakdbbuy1p" path="res://entities/player/game over/game_over.tscn" id="6_m33u3"]
+[ext_resource type="Script" uid="uid://dbq10vhocbru3" path="res://world/score.gd" id="4_re12h"]
+[ext_resource type="Script" uid="uid://diq27e0peg062" path="res://world/highscore.gd" id="4_t86mu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltsvv"]
 size = Vector2(1280, 40)
@@ -34,7 +33,7 @@ position = Vector2(624, 359)
 
 [node name="Oxigeno" type="Area2D" parent="."]
 position = Vector2(-8, 32)
-collision_mask = 2
+collision_mask = 15
 script = ExtResource("3_ltsvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Oxigeno"]
@@ -52,8 +51,8 @@ offset_bottom = 691.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_ph1s7")
 value = 1.0
 
-[node name="Wave_Spawner" type="Timer" parent="."]
-wait_time = 2.0
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
 autostart = true
 
 [node name="Score" type="Node" parent="."]
@@ -72,6 +71,7 @@ offset_left = 945.0
 offset_top = 52.0
 offset_right = 1241.0
 offset_bottom = 121.0
+text = "1"
 label_settings = SubResource("LabelSettings_ltsvv")
 horizontal_alignment = 1
 script = ExtResource("4_t86mu")
@@ -90,14 +90,11 @@ offset_left = 65.0
 offset_top = 52.0
 offset_right = 361.0
 offset_bottom = 121.0
+text = "1"
 label_settings = SubResource("LabelSettings_ltsvv")
 horizontal_alignment = 1
 script = ExtResource("4_re12h")
 
-[node name="GameOver_Canvas" type="CanvasLayer" parent="."]
-
-[node name="GameOver" parent="GameOver_Canvas" instance=ExtResource("6_m33u3")]
-
 [connection signal="body_entered" from="Oxigeno" to="Oxigeno" method="_on_body_entered"]
 [connection signal="body_exited" from="Oxigeno" to="Oxigeno" method="_on_body_exited"]
-[connection signal="timeout" from="Wave_Spawner" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
