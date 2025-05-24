@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwi3wnov7q5s2"]
+
+[ext_resource type="Script" uid="uid://bnawl42788tvt" path="res://spawn_humanos.gd" id="1_1kioy"]
+
+[node name="spawn_humanos" type="Node2D"]
+script = ExtResource("1_1kioy")

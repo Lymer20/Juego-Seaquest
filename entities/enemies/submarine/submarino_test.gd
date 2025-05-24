@@ -9,7 +9,7 @@ func _ready():
 		direccion_bala = -1
 	else:
 		direccion_bala = 1
-
+	
 func _on_enemy_s_hit_box_area_entered(area: Area2D) -> void:
 	if area.name == "gun_hitBox":
 		Global_Scoreboard.score += 50

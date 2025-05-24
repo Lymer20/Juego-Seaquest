@@ -53,7 +53,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ph1s7")
 value = 1.0
 
 [node name="Wave_Spawner" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 4.0
 autostart = true
 
 [node name="Score" type="Node" parent="."]
@@ -98,6 +98,11 @@ script = ExtResource("4_re12h")
 
 [node name="GameOver" parent="GameOver_Canvas" instance=ExtResource("6_m33u3")]
 
+[node name="Humans_Spawner" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="body_entered" from="Oxigeno" to="Oxigeno" method="_on_body_entered"]
 [connection signal="body_exited" from="Oxigeno" to="Oxigeno" method="_on_body_exited"]
 [connection signal="timeout" from="Wave_Spawner" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Humans_Spawner" to="." method="_on_humans_spawner_timeout"]

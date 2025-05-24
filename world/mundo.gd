@@ -5,6 +5,8 @@ var jugador_path=preload("res://entities/player/jugador.tscn")
 var jugador = jugador_path.instantiate()
 @export var game_over: bool
 
+var humanos = preload("res://spawn_humanos.tscn")
+
 #oleadas
 var oleadas = [
 	preload("res://entities/enemies/waves/oleada_2.tscn")
@@ -31,8 +33,14 @@ func spawn_random_wave():
 	
 	add_child(wave_instance)
 
+func spawn_humanos():
+	var humano_instance = humanos.instantiate()
+	add_child(humano_instance)
 	
 #aqui se llama a la funcion random cada 5 segundos	
+func _on_humans_spawner_timeout() -> void:
+	spawn_humanos()
+	
 func _on_timer_timeout() -> void:
 	spawn_random_wave()
 

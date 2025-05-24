@@ -23,6 +23,7 @@ func spawn_enemigos():
 	for i in range(3):
 		var enemigo_instance = enemigo_seleccionado.instantiate()
 		enemigo_instance.position = posiciones_spawn[i]
+			
 		add_child(enemigo_instance)
 
 func _process(delta):

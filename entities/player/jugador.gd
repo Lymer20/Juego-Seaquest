@@ -17,6 +17,7 @@ var salvados: int = 1
 # Disparo
 @onready var arma: Node2D = $Arma
 var bala_path=preload("res://entities/player/bala.tscn")
+var direccion_disparo = 1
 
 # Cooldown del disparo
 var shoot: bool = true
@@ -32,6 +33,10 @@ func _physics_process(delta: float) -> void:
 	# Movimiento en X
 	if movimiento_x:
 		velocity.x = move_toward(velocity.x, movimiento_x * velocidad_max, aceleracion * delta)
+		#direccion del sprite
+		sprite_2d.scale.x = abs(sprite_2d.scale.x) * (1 if movimiento_x < 0 else -1)
+		#direccion del disparo
+		direccion_disparo = 1 if movimiento_x > 0 else -1
 	else:
 		velocity.x = move_toward(velocity.x, 0, friccion * delta)
 
@@ -57,6 +62,7 @@ func _physics_process(delta: float) -> void:
 func disparar():
 	var bala=bala_path.instantiate()
 	bala.pos=$Arma.global_position
+	bala.speed *= direccion_disparo
 	get_parent().add_child(bala)
 
 func _on_cooldown_timeout() -> void:

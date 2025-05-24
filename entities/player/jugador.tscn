@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpcjdcnmlpdpb"]
 
 [ext_resource type="Script" uid="uid://d3ha2e0rbrexn" path="res://entities/player/jugador.gd" id="1_16k11"]
-[ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_omvyu"]
+[ext_resource type="Texture2D" uid="uid://bgo61e66h1c1t" path="res://submarino-jugador.png" id="2_f7wae"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8o684"]
 size = Vector2(128, 128)
@@ -14,8 +14,9 @@ collision_layer = 2
 script = ExtResource("1_16k11")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_omvyu")
+position = Vector2(-7.15256e-07, 2.5)
+scale = Vector2(0.0917969, 0.100586)
+texture = ExtResource("2_f7wae")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)

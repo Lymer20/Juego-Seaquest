@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var dentro_del_area = false
-@export var velocidad_disminucion = 5
+@export var velocidad_disminucion = 3
 var cantidad_oxigeno: float = 100
 var jugador_path=preload("res://entities/player/jugador.tscn")
 var jugador = jugador_path.instantiate()
