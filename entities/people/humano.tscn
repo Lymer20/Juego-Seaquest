@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgbshdl4mmsje"]
+
+[ext_resource type="Script" uid="uid://b2y1vr0x1s00n" path="res://entities/people/humano.gd" id="1_sphdd"]
+[ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_gtord"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqlud"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sphdd"]
+radius = 34.8281
+
+[node name="humano" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_sphdd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.19209e-07, 4.76837e-07)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_gtord")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qqlud")
+debug_color = Color(0, 0.6, 0.133333, 0.419608)
+
+[node name="Sale_de_vista" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2.86102e-06, 0)
+scale = Vector2(3.6, 0.25)
+
+[node name="human_areaBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="human_areaBox"]
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CircleShape2D_sphdd")
+
+[node name="Vuelta_Huida" type="RayCast2D" parent="."]
+position = Vector2(-24, 0)
+scale = Vector2(25, 25)
+target_position = Vector2(2.24, 0)
+collision_mask = 8
+
+[node name="Vuelta_Automatica" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+autostart = true
+
+[connection signal="screen_exited" from="Sale_de_vista" to="." method="_on_sale_de_vista_screen_exited"]
+[connection signal="area_entered" from="human_areaBox" to="." method="_on_enemy_detect_area_entered"]
+[connection signal="area_entered" from="human_areaBox" to="." method="_on_human_area_box_area_entered"]
+[connection signal="area_exited" from="human_areaBox" to="." method="_on_enemy_detect_area_exited"]

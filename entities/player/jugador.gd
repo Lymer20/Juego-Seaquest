@@ -3,15 +3,16 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 @export var dentro_del_area = false
-var jugador_muerto: bool
 @onready var barra_oxigeno: ProgressBar = $"../Oxigeno/barra de oxigeno/ProgressBar"
+var jugador_muerto: bool
 
 # Movimiento
 const velocidad_max: float = 300
 const aceleracion: float = 900
 const friccion: float = 1200
 
-var salvados: int = 1
+# Personas a salvar
+var salvados: int = 0
 
 
 # Disparo
@@ -29,14 +30,19 @@ func _physics_process(delta: float) -> void:
 	# Estas variables detectan movimiento en X y en Y
 	var movimiento_x := Input.get_axis("izquierda", "derecha")
 	var movimiento_y := Input.get_axis("arriba", "abajo")
+	# Por alguna razón, para ir arriba, se necesita que el "salto" sea negativo... Godot, ¿¿¿q fue???
 	
 	# Movimiento en X
 	if movimiento_x:
+		# Movimiento como tal
 		velocity.x = move_toward(velocity.x, movimiento_x * velocidad_max, aceleracion * delta)
-		#direccion del sprite
-		sprite_2d.scale.x = abs(sprite_2d.scale.x) * (1 if movimiento_x < 0 else -1)
-		#direccion del disparo
-		direccion_disparo = 1 if movimiento_x > 0 else -1
+		
+		# Dirección de la bala
+		if movimiento_x < 0:
+			direccion_disparo = -1
+		else:
+			direccion_disparo = 1
+			
 	else:
 		velocity.x = move_toward(velocity.x, 0, friccion * delta)
 
@@ -55,6 +61,7 @@ func _physics_process(delta: float) -> void:
 		print("Cooldown")
 		
 	move_and_slide()
+	animations_update(movimiento_x)
 	
 	if barra_oxigeno.value == 0.0:
 		death_oxygen()
@@ -77,6 +84,14 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		gameover()
 		print("Ohno, moriste!")
 		queue_free()
+		
+	# Persona salvada
+	if area.name == "human_areaBox" and salvados < 6:
+		salvados += 1
+		print("Personas salvadas:" + str(salvados) + ("!"))
+	elif area.name == "human_areaBox" and salvados >= 6:
+		print("Ya estas al maximo")
+		print("Cantidad de personas salvadas:" + str(salvados) + ("!"))
 
 func death_oxygen():
 	if barra_oxigeno.value == 0.0:
@@ -89,3 +104,9 @@ func gameover():
 	if jugador_muerto == true:
 		get_node("../GameOver_Canvas/GameOver").game_over()
 		print("Se cumplio la condición")
+
+# Animacion
+
+func animations_update(movimiento_x):
+	if movimiento_x:
+		sprite_2d.flip_h = movimiento_x < 0

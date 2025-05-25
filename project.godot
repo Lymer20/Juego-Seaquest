@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 SaveLoad="*res://save_load.gd"
-Global_Scoreboard="*res://scoreboard.gd"
+Global_Scoreboard="*res://global/scoreboard.gd"
+Global_Player="*res://global/player.gd"
 
 [display]
 
@@ -70,6 +71,8 @@ revivir={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Bullet"
 2d_physics/layer_4="Enemy"
+2d_physics/layer_5="Human"
+2d_physics/layer_6="Bullet_Enemy"
 
 [rendering]
 

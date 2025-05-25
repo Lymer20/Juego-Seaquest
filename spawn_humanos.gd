@@ -1,10 +1,9 @@
 extends Node2D
 
-var velocidad = 100
 var direccion = 1  
 
 var humanos = [
-	preload("res://entities/enemies/humans/humanos.tscn")
+	preload("res://entities/people/humano.tscn")
 ]
 
 var posiciones_spawn = [
@@ -26,6 +25,7 @@ func spawn_oleada():
 		var humano_instance = humano_escena.instantiate()
 		
 		if humano_direction == 0:
+			humano_instance.scale.x = -humano_instance.scale.x
 			humano_instance.direccion = -1
 			humano_instance.position = Vector2(get_viewport_rect().size.x + 50, pos_y + (i * 40))  
 		else:
@@ -35,9 +35,6 @@ func spawn_oleada():
 		#humano_instance.scale.x = -1 if humano_direction == 0 else 1
 		
 		add_child(humano_instance)
-
-func _process(delta):
-	position.x += velocidad * direccion * delta
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

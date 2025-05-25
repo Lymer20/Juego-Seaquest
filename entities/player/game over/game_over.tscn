@@ -1,16 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvxcakdbbuy1p"]
+[gd_scene load_steps=9 format=3 uid="uid://bvxcakdbbuy1p"]
 
 [ext_resource type="Script" uid="uid://c11niutqdn1jk" path="res://entities/player/game over/game_over.gd" id="1_y26ei"]
 [ext_resource type="Script" uid="uid://diq27e0peg062" path="res://world/scores/highscore.gd" id="2_yxx3c"]
+[ext_resource type="Script" uid="uid://dbq10vhocbru3" path="res://world/scores/score.gd" id="3_j7dmf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yxx3c"]
 font_size = 80
 
 [sub_resource type="LabelSettings" id="LabelSettings_ccer4"]
-font_size = 40
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_8u835"]
-font_size = 40
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_yu6il"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_ingkc"]
+font_size = 20
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -55,7 +62,7 @@ offset_right = 547.0
 offset_bottom = 454.0
 text = "Reiniciar"
 
-[node name="Label" type="Label" parent="."]
+[node name="Te moriste" type="Label" parent="."]
 layout_mode = 0
 offset_left = 266.0
 offset_top = 112.0
@@ -64,25 +71,45 @@ offset_bottom = 222.0
 text = "T MORISTE CAUSA"
 label_settings = SubResource("LabelSettings_yxx3c")
 
-[node name="Label2" type="Label" parent="."]
+[node name="Puntaje mas alto" type="Label" parent="."]
 layout_mode = 0
-offset_left = 305.0
-offset_top = 246.0
-offset_right = 641.0
-offset_bottom = 301.0
+offset_left = 296.0
+offset_top = 250.0
+offset_right = 632.0
+offset_bottom = 278.0
 text = "Puntaje mas alto:"
 label_settings = SubResource("LabelSettings_ccer4")
 
 [node name="Highscore" type="Label" parent="."]
 layout_mode = 0
-offset_left = 395.0
-offset_top = 301.0
-offset_right = 532.0
-offset_bottom = 356.0
+offset_left = 464.0
+offset_top = 248.0
+offset_right = 600.0
+offset_bottom = 280.0
 text = "0"
 label_settings = SubResource("LabelSettings_8u835")
 horizontal_alignment = 1
 script = ExtResource("2_yxx3c")
+
+[node name="Puntaje actual" type="Label" parent="."]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 296.0
+offset_right = 449.0
+offset_bottom = 324.0
+text = "Puntaje actual:"
+label_settings = SubResource("LabelSettings_yu6il")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 296.0
+offset_right = 600.0
+offset_bottom = 328.0
+text = "0"
+label_settings = SubResource("LabelSettings_ingkc")
+horizontal_alignment = 1
+script = ExtResource("3_j7dmf")
 
 [node name="Boton_Guardar" type="Button" parent="."]
 layout_mode = 0
