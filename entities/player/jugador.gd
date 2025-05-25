@@ -14,7 +14,6 @@ const friccion: float = 1200
 # Personas a salvar
 var salvados: int = 0
 
-
 # Disparo
 @onready var arma: Node2D = $Arma
 var bala_path=preload("res://entities/player/bala.tscn")
@@ -79,10 +78,10 @@ func _on_cooldown_timeout() -> void:
 
 # Muertes
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.name == "enemy_hitBox" or area.name == "enemy_gun_hitBox":
-		jugador_muerto = true
-		gameover()
-		print("Ohno, moriste!")
+	if area.name == "enemy_hitBox" or area.name == "enemy_gun_hitBox": 
+		jugador_muerto = true 
+		gameover() 
+		print("Ohno, moriste!") 
 		queue_free()
 		
 	# Persona salvada
@@ -102,8 +101,9 @@ func death_oxygen():
 
 func gameover():
 	if jugador_muerto == true:
-		get_node("../GameOver_Canvas/GameOver").game_over()
 		print("Se cumplio la condición")
+		get_node("../GameOver_Canvas/GameOver").game_over()
+		
 
 # Animacion
 
