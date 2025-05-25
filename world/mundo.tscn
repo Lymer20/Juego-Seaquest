@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs80h6pf4qjk"]
+[gd_scene load_steps=12 format=3 uid="uid://bs80h6pf4qjk"]
 
 [ext_resource type="Script" uid="uid://qgt7qrtq22rj" path="res://world/mundo.gd" id="1_6ba58"]
 [ext_resource type="PackedScene" uid="uid://cpcjdcnmlpdpb" path="res://entities/player/jugador.tscn" id="2_lgngo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dbq10vhocbru3" path="res://world/scores/score.gd" id="4_re12h"]
 [ext_resource type="Script" uid="uid://diq27e0peg062" path="res://world/scores/highscore.gd" id="4_t86mu"]
 [ext_resource type="PackedScene" uid="uid://bvxcakdbbuy1p" path="res://entities/player/game over/game_over.tscn" id="6_m33u3"]
+[ext_resource type="Script" uid="uid://fh05msusyxja" path="res://world/wave/waves.gd" id="6_nxwut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltsvv"]
 size = Vector2(1280, 40)
@@ -15,6 +16,9 @@ bg_color = Color(0.331893, 0.698049, 0.273888, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ltsvv"]
 font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_nxwut"]
+font_size = 30
 
 [node name="Mundo" type="Node2D"]
 script = ExtResource("1_6ba58")
@@ -53,11 +57,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ph1s7")
 value = 1.0
 
 [node name="Wave_Spawner" type="Timer" parent="."]
-wait_time = 50.0
-autostart = true
+wait_time = 102.218
+one_shot = true
 
 [node name="Humans_Spawner" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true
 
 [node name="Score" type="Node" parent="."]
@@ -97,6 +100,17 @@ offset_bottom = 121.0
 label_settings = SubResource("LabelSettings_ltsvv")
 horizontal_alignment = 1
 script = ExtResource("4_re12h")
+
+[node name="Wave" type="Node" parent="Score"]
+
+[node name="Wave_Actual" type="Label" parent="Score/Wave"]
+offset_left = 547.0
+offset_top = 52.0
+offset_right = 731.0
+offset_bottom = 140.0
+label_settings = SubResource("LabelSettings_nxwut")
+horizontal_alignment = 1
+script = ExtResource("6_nxwut")
 
 [node name="GameOver_Canvas" type="CanvasLayer" parent="."]
 

@@ -48,3 +48,4 @@ autostart = true
 [connection signal="area_entered" from="human_areaBox" to="." method="_on_enemy_detect_area_entered"]
 [connection signal="area_entered" from="human_areaBox" to="." method="_on_human_area_box_area_entered"]
 [connection signal="area_exited" from="human_areaBox" to="." method="_on_enemy_detect_area_exited"]
+[connection signal="timeout" from="Vuelta_Automatica" to="." method="_on_vuelta_automatica_timeout"]

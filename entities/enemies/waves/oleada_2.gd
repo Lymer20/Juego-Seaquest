@@ -23,11 +23,12 @@ func spawn_enemigos():
 	for i in range(3):
 		var enemigo_instance = enemigo_seleccionado.instantiate()
 		enemigo_instance.position = posiciones_spawn[i]
-			
 		add_child(enemigo_instance)
 
 func _process(delta):
-	position.x += velocidad * direccion * delta
+	var movimiento_base: float = (velocidad * direccion * delta)
+	var movimiento_def = movimiento_base + (movimiento_base * Global_Player.waves)/10
+	position.x += movimiento_def
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
