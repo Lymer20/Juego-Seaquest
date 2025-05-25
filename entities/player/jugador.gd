@@ -4,14 +4,14 @@ extends CharacterBody2D
 
 @export var dentro_del_area = false
 @onready var barra_oxigeno: ProgressBar = $"../Oxigeno/barra de oxigeno/ProgressBar"
-var jugador_muerto: bool
 
 # Movimiento
-const velocidad_max: float = 300
-const aceleracion: float = 900
-const friccion: float = 1200
+const velocidad_max: float = Global_Player.velocidad_max
+const aceleracion: float = Global_Player.aceleracion
+const friccion: float = Global_Player.friccion
 
 # Personas a salvar
+
 var salvados: int = 0
 
 # Disparo
@@ -40,8 +40,7 @@ func _physics_process(delta: float) -> void:
 		if movimiento_x < 0:
 			direccion_disparo = -1
 		else:
-			direccion_disparo = 1
-			
+			direccion_disparo = 1	
 	else:
 		velocity.x = move_toward(velocity.x, 0, friccion * delta)
 
@@ -55,9 +54,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("disparo") and shoot:
 		disparar()
 		shoot = false
-		cooldown.wait_time = 0.75
 		cooldown.start()
-		print("Cooldown")
 		
 	move_and_slide()
 	animations_update(movimiento_x)
@@ -74,37 +71,39 @@ func disparar():
 func _on_cooldown_timeout() -> void:
 	if !shoot:
 		shoot = true
-		print("Puedes disparar!")
 
-# Muertes
+# Muertes y Personas Salvadas
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.name == "enemy_hitBox" or area.name == "enemy_gun_hitBox": 
-		jugador_muerto = true 
-		gameover() 
-		print("Ohno, moriste!") 
+	if area.name == "enemy_hitBox" or area.name == "enemy_gun_hitBox":
+		Global_Player.take_damage()
+		if Global_Player.health <= 0:
+			Global_Player.gameover()
+		else:
+			respawn()
+
+	if area.name == "enemy_hitBox" or area.name == "enemy_gun_hitBox":
+		Global_Player.jugador_muerto = true
+		Global_Player.gameover()
 		queue_free()
 		
 	# Persona salvada
-	if area.name == "human_areaBox" and salvados < 6:
-		salvados += 1
-		print("Personas salvadas:" + str(salvados) + ("!"))
-	elif area.name == "human_areaBox" and salvados >= 6:
-		print("Ya estas al maximo")
-		print("Cantidad de personas salvadas:" + str(salvados) + ("!"))
+	if area.name == "human_areaBox" :
+		if Global_Player.salvados >= 6:
+			print("Ya estas al maximo.")
+		else:
+			Global_Player.salvados += 1
+			salvados == Global_Player.salvados
+			print("Personas salvadas:" + str(salvados) + ("!"))
 
 func death_oxygen():
 	if barra_oxigeno.value == 0.0:
-		jugador_muerto = true
-		gameover()
-		print("Ohno, moriste!")
+		Global_Player.jugador_muerto = true
+		Global_Player.gameover()
 		queue_free()
 
-func gameover():
-	if jugador_muerto == true:
-		print("Se cumplio la condición")
-		get_node("../GameOver_Canvas/GameOver").game_over()
-		
-
+func respawn():
+	global_position = Vector2(624, 359)
+	
 # Animacion
 
 func animations_update(movimiento_x):
