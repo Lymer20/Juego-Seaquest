@@ -25,7 +25,6 @@ func _on_enemy_detect_area_entered(area: Area2D) -> void:
 		else:
 			print("No se puede, ya salvaste la cantidad maxima")	
 			
-
 func _on_enemy_detect_area_exited(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" || area.name == "enemy_gun_hitBox":
 		velocidad = velocidad / 2

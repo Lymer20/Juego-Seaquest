@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: Sprite2D = $Path2D/PathFollow2D/Sprite2D
 var valor_enemigo_tiburon = 20
 
 func _ready():

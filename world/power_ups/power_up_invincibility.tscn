@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d08mlfwow2t3o"]
 
-[ext_resource type="Script" uid="uid://bq017oqup2awu" path="res://power_up_invincibility.gd" id="1_1ihjw"]
+[ext_resource type="Script" uid="uid://bq017oqup2awu" path="res://world/power_ups/power_up_invincibility.gd" id="1_1ihjw"]
 [ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_dhlg1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7nqc"]

@@ -3,8 +3,8 @@ extends Node2D
 @onready var polygon_2d: Polygon2D = $"StaticBody2D/Colision del Mapa/Polygon2D"
 @onready var wave_spawner_timer: Timer = $Wave_Spawner
 
-var powerup_path = preload("res://spawn_powerup.tscn")
-var humanos = preload("res://spawn_humanos.tscn")
+var powerup_path = preload("res://world/power_ups/spawn_powerup.tscn")
+var humanos = preload("res://entities/people/spawn_humanos.tscn")
 
 
 #oleadas

@@ -3,8 +3,8 @@ extends Node2D
 var direccion = 1  
 
 var power_ups = [
-	preload("res://power_up_shooter.tscn"),
-	preload("res://power_up_invincibility.tscn")
+	preload("res://world/power_ups/power_up_shooter.tscn"),
+	preload("res://world/power_ups/power_up_invincibility.tscn")
 ]
 
 func _ready():
