@@ -53,26 +53,18 @@ position = Vector2(600, 112)
 scale = Vector2(0.183908, 0.230496)
 texture = ExtResource("3_rfplf")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="health_bar"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="heart" type="TextureRect" parent="health_bar/HBoxContainer2"]
+[node name="heart2" type="TextureRect" parent="health_bar/HBoxContainer"]
 layout_mode = 2
 
-[node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer2/heart"]
+[node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart2"]
 position = Vector2(656, 112)
 scale = Vector2(0.183908, 0.230496)
 texture = ExtResource("3_rfplf")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="health_bar"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="heart" type="TextureRect" parent="health_bar/HBoxContainer3"]
+[node name="heart3" type="TextureRect" parent="health_bar/HBoxContainer"]
 layout_mode = 2
 
-[node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer3/heart"]
+[node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart3"]
 position = Vector2(712, 112)
 scale = Vector2(0.183908, 0.230496)
 texture = ExtResource("3_rfplf")

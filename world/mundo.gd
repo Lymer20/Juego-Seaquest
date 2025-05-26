@@ -6,7 +6,6 @@ extends Node2D
 var powerup_path = preload("res://world/power_ups/spawn_powerup.tscn")
 var humanos = preload("res://entities/people/spawn_humanos.tscn")
 
-
 #oleadas
 var oleadas = [
 	preload("res://entities/enemies/waves/oleada_2.tscn")

@@ -38,7 +38,7 @@ func _ready() -> void:
 		
 func update_heart_display():
 	for i in range(heart_list.size()):
-		heart_list[i].visible = i < health
+		heart_list[i].visible = i < max(health, 0)
 
 func take_damage():
 	if health > 0:
