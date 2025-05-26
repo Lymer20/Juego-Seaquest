@@ -130,9 +130,10 @@ func death_oxygen():
 func _on_power_up_duration_timeout() -> void:
 	if shooter_cooldown == 0.3:
 		shooter_cooldown = 0
+		print("No mas shooter")
 	
 	if invincibility == true:
-		invincibility == false
+		invincibility = false
 		
 # Animacion
 
@@ -142,3 +143,5 @@ func animations_update(movimiento_x):
 	
 	if invincibility == true:
 		sprite_2d.modulate = Color(50, 50, 50)
+	else:
+		sprite_2d.modulate = Color(1, 1,  1)

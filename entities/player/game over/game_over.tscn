@@ -111,14 +111,5 @@ label_settings = SubResource("LabelSettings_ingkc")
 horizontal_alignment = 1
 script = ExtResource("3_j7dmf")
 
-[node name="Boton_Guardar" type="Button" parent="."]
-layout_mode = 0
-offset_left = 698.0
-offset_top = 261.0
-offset_right = 873.0
-offset_bottom = 320.0
-text = "¿Guardar puntaje?"
-
 [connection signal="pressed" from="Boton_Menu" to="." method="_on_boton_menu_pressed"]
 [connection signal="pressed" from="Boton_Reiniciar" to="." method="_on_boton_reiniciar_pressed"]
-[connection signal="pressed" from="Boton_Guardar" to="." method="_on_boton_guardar_pressed"]

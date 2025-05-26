@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bu5kp7j6gmbfu"]
 
-[ext_resource type="Script" uid="uid://bbr7lue5a4uk7" path="res://power_up_shooter.gd" id="1_vemsm"]
+[ext_resource type="Script" uid="uid://bbr7lue5a4uk7" path="res://world/power_ups/power_up_shooter.gd" id="1_vemsm"]
 [ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_8i602"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwgvp"]

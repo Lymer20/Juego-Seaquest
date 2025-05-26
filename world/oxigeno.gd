@@ -6,6 +6,10 @@ var cantidad_oxigeno: float = 1000
 var valor_humano: int = 50
 var jugador_path=preload("res://entities/player/jugador.tscn")
 var jugador = jugador_path.instantiate()
+@onready var tiempo_reinicio: Timer = $Tiempo_Reinicio
+
+func _ready():
+	tiempo_reinicio.process_mode = Timer.PROCESS_MODE_ALWAYS
 
 func _process(delta: float) -> void:
 	var progress_bar = get_node("barra de oxigeno/ProgressBar")
@@ -30,7 +34,7 @@ func _on_body_entered(body: Node) -> void:
 			else:
 ## ARREGLAR DESPUES !!!!!
 				score_ganado = (valor_humano + (Global_Player.waves * valor_humano) + ((cantidad_oxigeno)* 10 * Global_Player.waves))
-
+			
 			# Valor que recibe de los salvados
 			for i in range(Global_Player.salvados):
 				Global_Scoreboard.score += score_ganado
@@ -40,10 +44,17 @@ func _on_body_entered(body: Node) -> void:
 			Global_Player.salvados = 0
 			cantidad_oxigeno = 1000
 			print("Avanzas de ola")
+			
+			get_tree().paused = true
+			tiempo_reinicio.start()
+			if tiempo_reinicio.start:
+				print("Inicia tiempo")
 		else:
 			print("Haha q tonto")
 			Global_Player.jugador_muerto = true
 			Global_Player.gameover()
-
-
- 
+			
+func _on_tiempo_reinicio_timeout() -> void:
+	print("Reload")
+	get_tree().paused = false
+	get_tree().reload_current_scene()

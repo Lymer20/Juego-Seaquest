@@ -1,10 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwmpvj0whpvbv"]
+[gd_scene load_steps=7 format=3 uid="uid://cwmpvj0whpvbv"]
 
 [ext_resource type="Script" uid="uid://dglrpf1y73x4c" path="res://entities/enemies/shark/hurt_test.gd" id="1_qt07b"]
 [ext_resource type="Texture2D" uid="uid://1ie62othawls" path="res://pez1.png" id="2_42pe2"]
+[ext_resource type="Script" uid="uid://q8fjd01cc7fb" path="res://entities/enemies/shark/path_follow_2d.gd" id="2_suurd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rfjf"]
 size = Vector2(128, 128)
+
+[sub_resource type="Curve2D" id="Curve2D_42pe2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, -39, 0, 0, 0, 0, 0, 39, -0.0486088, -2.60057, 0.0486088, 2.60057, -1, 0, 0, 0, 0, 0, -1, 0)
+}
+point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b28pw"]
 size = Vector2(48, 48)
@@ -14,22 +21,34 @@ collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_qt07b")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.125, 0)
-scale = Vector2(0.0563965, 0.0605469)
-texture = ExtResource("2_42pe2")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.375, 0.375)
 shape = SubResource("RectangleShape2D_0rfjf")
 debug_color = Color(0.0853459, 0.196693, 1, 0.42)
 
-[node name="enemy_hitBox" type="Area2D" parent="."]
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_42pe2")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(0, -1)
+rotation = -1.58449
+rotates = false
+script = ExtResource("2_suurd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-0.984497, -1.13859)
+rotation = 1.58449
+scale = Vector2(0.0563965, 0.0605469)
+texture = ExtResource("2_42pe2")
+
+[node name="enemy_hitBox" type="Area2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-0.999906, -0.0136974)
+rotation = 1.58449
 collision_layer = 8
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/enemy_hitBox"]
 shape = SubResource("RectangleShape2D_b28pw")
 debug_color = Color(0.707332, 0, 0.151659, 0.42)
 
-[connection signal="area_entered" from="enemy_hitBox" to="." method="_on_enemy_hit_box_area_entered"]
+[connection signal="area_entered" from="Path2D/PathFollow2D/enemy_hitBox" to="." method="_on_enemy_hit_box_area_entered"]
