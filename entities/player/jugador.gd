@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
+@onready var power_up_duration: Timer = $/root/Mundo/Jugador/PowerUp_Duration
+var invincibility: bool = false
+var shooter_cooldown = 0.0
+
 @export var dentro_del_area = false
 @onready var barra_oxigeno: ProgressBar = $"../Oxigeno/barra de oxigeno/ProgressBar"
 
@@ -19,6 +23,25 @@ var direccion_disparo = 1
 var shoot: bool = true
 @onready var cooldown: Timer = $Arma/cooldown
 
+var heart_list: Array [TextureRect]
+var health = 3
+
+func _ready():
+	pass
+		
+func update_heart_display():
+	for i in range(heart_list.size()):
+		heart_list[i].visible = i < health
+		
+func take_damage():
+	if health > 0:
+		health -= 1
+		update_heart_display()
+		
+		if health <= 0:
+			Global_Player.gameover()
+		else:
+			print("Perdiste una vida, vida restante:" + str(health))
 
 func _physics_process(delta: float) -> void:
 		
@@ -52,7 +75,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("disparo") and shoot:
 		disparar()
 		shoot = false
-		cooldown.wait_time = 0.4 - (Global_Player.shooter_cooldown)
+		cooldown.wait_time = 0.4 - (shooter_cooldown)
 		cooldown.start()
 		
 	move_and_slide()
@@ -74,18 +97,25 @@ func _on_cooldown_timeout() -> void:
 # Muertes 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" or area.name == "enemy_gun_hitBox":
-		if Global_Player.invincibility == false:
-			Global_Player.jugador_muerto = true
-			Global_Player.gameover()
-			queue_free()
+		if invincibility == false:
+			if health > 0:
+				take_damage()
+			else:
+				Global_Player.jugador_muerto = true
+				Global_Player.gameover()
+				queue_free()
 		else:
 			pass
 	
 	if area.name == "shooter_areaBox":
-		Global_Player.shooter_powerup()
+		shooter_cooldown = 0.3
+		power_up_duration.wait_time = 10
+		power_up_duration.start()
 		
 	if area.name == "invincibility_areaBox":
-		Global_Player.invincibility_powerup()
+		invincibility = true
+		power_up_duration.wait_time = 10
+		power_up_duration.start()
 
 func death_oxygen():
 	if barra_oxigeno.value == 0.0:
@@ -95,16 +125,17 @@ func death_oxygen():
 
 # Power Up
 func _on_power_up_duration_timeout() -> void:
-	if Global_Player.shooter_cooldown == 0.3:
-		Global_Player.shooter_cooldown = 0
+	if shooter_cooldown == 0.3:
+		shooter_cooldown = 0
 	
-	if Global_Player.invincibility == true:
-		Global_Player.invincibility == false
+	if invincibility == true:
+		invincibility == false
 # Animacion
 
 func animations_update(movimiento_x):
 	if movimiento_x:
 		sprite_2d.flip_h = movimiento_x < 0
 	
-	if Global_Player.invincibility == true:
+	if invincibility == true:
+		print("Hay invencibilidad")
 		sprite_2d.modulate = Color(50, 50, 50)
