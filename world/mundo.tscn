@@ -35,7 +35,6 @@ visible = false
 
 [node name="Jugador" parent="." instance=ExtResource("2_lgngo")]
 position = Vector2(624, 359)
-dentro_del_area = false
 
 [node name="Oxigeno" type="Area2D" parent="."]
 position = Vector2(-8, 32)
@@ -58,10 +57,8 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_ph1s7")
 value = 1.0
 
 [node name="Wave_Spawner" type="Timer" parent="."]
-
 wait_time = 3.0
 autostart = true
-
 
 [node name="Humans_Spawner" type="Timer" parent="."]
 autostart = true

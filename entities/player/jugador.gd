@@ -14,6 +14,11 @@ const friccion: float = Global_Player.friccion
 
 var salvados: int = 0
 
+func _ready():
+	var container = get_node("/root/Mundo/Jugador/health_bar/HBoxContainer")  # Obtiene el nodo contenedor
+	if container:
+		Global_Player.heart_list = container.get_children()
+
 # Disparo
 @onready var arma: Node2D = $Arma
 var bala_path=preload("res://entities/player/bala.tscn")
@@ -25,6 +30,7 @@ var shoot: bool = true
 
 func _physics_process(delta: float) -> void:
 	# MOVIMIENTO
+	print(get_path())
 	
 	# Estas variables detectan movimiento en X y en Y
 	var movimiento_x := Input.get_axis("izquierda", "derecha")
@@ -84,7 +90,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" or area.name == "enemy_gun_hitBox":
 		Global_Player.jugador_muerto = true
 		Global_Player.gameover()
-		queue_free()
+		#queue_free()
 		
 	# Persona salvada
 	if area.name == "human_areaBox" :
