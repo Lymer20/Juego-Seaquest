@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu5kp7j6gmbfu"]
+
+[ext_resource type="Script" uid="uid://bbr7lue5a4uk7" path="res://power_up_shooter.gd" id="1_vemsm"]
+[ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_8i602"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwgvp"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vemsm"]
+size = Vector2(32, 32)
+
+[node name="PowerUp_Shooter" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_vemsm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_8i602")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xwgvp")
+debug_color = Color(1, 0.924997, 0.796387, 0.42)
+
+[node name="Sale_de_vista" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(4, 0.4)
+
+[node name="shooter_areaBox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shooter_areaBox"]
+shape = SubResource("RectangleShape2D_vemsm")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[connection signal="screen_exited" from="Sale_de_vista" to="." method="_on_sale_de_vista_screen_exited"]
+[connection signal="area_entered" from="shooter_areaBox" to="." method="_on_shooter_area_box_area_entered"]

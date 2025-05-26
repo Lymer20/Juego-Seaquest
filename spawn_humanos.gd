@@ -15,9 +15,11 @@ var posiciones_spawn = [
 func _ready():
 	spawn_oleada()
 
+## Recomendación: Cambiar este metodo de hacer oleadas con
+## oleadas ya predeterminadas. Aprender y hacerlo primero con la de los enemigos
 func spawn_oleada():
 	var cantidad_humanos = randi_range(1, 4) 
-	var pos_y = randf_range(230, 454)
+	var pos_y = randf_range(200, 434)
 	var humano_direction = randi_range(0, 1)
 	
 	for i in range(cantidad_humanos):
@@ -27,10 +29,10 @@ func spawn_oleada():
 		if humano_direction == 0:
 			humano_instance.scale.x = -humano_instance.scale.x
 			humano_instance.direccion = -1
-			humano_instance.position = Vector2(get_viewport_rect().size.x + 50, pos_y + (i * 40))  
+			humano_instance.position = Vector2(get_viewport_rect().size.x + 50, pos_y + (i * 100))  
 		else:
 			humano_instance.direccion = 1
-			humano_instance.position = Vector2(-50, pos_y + (i * 40))  
+			humano_instance.position = Vector2(-50, pos_y + (i * 100))  
 			
 		#humano_instance.scale.x = -1 if humano_direction == 0 else 1
 		

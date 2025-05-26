@@ -11,6 +11,7 @@ func _on_boton_reiniciar_pressed() -> void:
 	Global_Scoreboard.reset_score = true
 	Global_Player.waves = 0
 	Global_Player.salvados = 0
+	Global_Player.power_up_duration.wait_time = 10
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 	

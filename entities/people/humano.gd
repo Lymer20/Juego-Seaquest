@@ -18,11 +18,13 @@ func _on_enemy_detect_area_entered(area: Area2D) -> void:
 		velocidad = velocidad * 2
 	
 	if area.name == "player_hurtBox":
-		var personas_salvadas: int = Global_Player.salvados
-		if personas_salvadas >= 6:
-			print("De humanos.gd: Ya no podei")
-		else:
+		var personas_salvadas: int = Global_Player.salvados 
+		if Global_Player.salvados < 6:
+			Global_Player.salvados += 1
 			queue_free()
+		else:
+			print("No se puede, ya salvaste la cantidad maxima")	
+			
 
 func _on_enemy_detect_area_exited(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" || area.name == "enemy_gun_hitBox":

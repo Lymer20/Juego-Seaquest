@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://d08mlfwow2t3o"]
+
+[ext_resource type="Script" uid="uid://bq017oqup2awu" path="res://power_up_invincibility.gd" id="1_1ihjw"]
+[ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_dhlg1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7nqc"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uop50"]
+size = Vector2(32, 32)
+
+[node name="PowerUp_Invincibility" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_1ihjw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_dhlg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k7nqc")
+debug_color = Color(1, 0.526002, 0.634563, 0.42)
+
+[node name="Sale_de_vista" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(4, 0.525)
+
+[node name="invincibility_areaBox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="invincibility_areaBox"]
+shape = SubResource("RectangleShape2D_uop50")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[connection signal="screen_exited" from="Sale_de_vista" to="." method="_on_sale_de_vista_screen_exited"]
+[connection signal="area_entered" from="invincibility_areaBox" to="." method="_on_invincibility_area_box_area_entered"]
