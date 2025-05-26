@@ -19,10 +19,7 @@ const friccion: float = Global_Player.friccion
 var salvados: int = 0
 
 func _ready():
-	var container = get_node("/root/Mundo/Jugador/health_bar/HBoxContainer")  # Obtiene el nodo contenedor
-	if container:
-		Global_Player.heart_list = container.get_children()
-
+	pass
 
 # Disparo
 @onready var arma: Node2D = $Arma
@@ -35,9 +32,6 @@ var shoot: bool = true
 
 var heart_list: Array [TextureRect]
 var health = 3
-
-func _ready():
-	pass
 		
 func update_heart_display():
 	for i in range(heart_list.size()):
@@ -56,8 +50,6 @@ func take_damage():
 func _physics_process(delta: float) -> void:
 		
 	# MOVIMIENTO
-	print(get_path())
-	
 	# Estas variables detectan movimiento en X y en Y
 	var movimiento_x := Input.get_axis("izquierda", "derecha")
 	var movimiento_y := Input.get_axis("arriba", "abajo")
@@ -141,6 +133,7 @@ func _on_power_up_duration_timeout() -> void:
 	
 	if invincibility == true:
 		invincibility == false
+		
 # Animacion
 
 func animations_update(movimiento_x):
@@ -148,5 +141,4 @@ func animations_update(movimiento_x):
 		sprite_2d.flip_h = movimiento_x < 0
 	
 	if invincibility == true:
-		print("Hay invencibilidad")
 		sprite_2d.modulate = Color(50, 50, 50)
