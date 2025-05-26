@@ -14,6 +14,16 @@ const velocidad_max: float = Global_Player.velocidad_max
 const aceleracion: float = Global_Player.aceleracion
 const friccion: float = Global_Player.friccion
 
+# Personas a salvar
+
+var salvados: int = 0
+
+func _ready():
+	var container = get_node("/root/Mundo/Jugador/health_bar/HBoxContainer")  # Obtiene el nodo contenedor
+	if container:
+		Global_Player.heart_list = container.get_children()
+
+
 # Disparo
 @onready var arma: Node2D = $Arma
 var bala_path=preload("res://entities/player/bala.tscn")
@@ -46,6 +56,7 @@ func take_damage():
 func _physics_process(delta: float) -> void:
 		
 	# MOVIMIENTO
+	print(get_path())
 	
 	# Estas variables detectan movimiento en X y en Y
 	var movimiento_x := Input.get_axis("izquierda", "derecha")

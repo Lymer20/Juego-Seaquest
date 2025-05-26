@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpcjdcnmlpdpb"]
+[gd_scene load_steps=6 format=3 uid="uid://cpcjdcnmlpdpb"]
 
 [ext_resource type="Script" uid="uid://d3ha2e0rbrexn" path="res://entities/player/jugador.gd" id="1_16k11"]
 [ext_resource type="Texture2D" uid="uid://bgo61e66h1c1t" path="res://submarino-jugador.png" id="2_f7wae"]
+[ext_resource type="Texture2D" uid="uid://b47x0dl2lf58f" path="res://Heart.png" id="3_rfplf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8o684"]
 size = Vector2(128, 128)
@@ -36,6 +37,38 @@ debug_color = Color(0.884748, 0.00031054, 0.809704, 0.42)
 wait_time = 0.4
 autostart = true
 
+[node name="health_bar" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="health_bar"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="health_bar/HBoxContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="health_bar/HBoxContainer/TextureRect"]
+position = Vector2(579.5, 129.25)
+scale = Vector2(0.387931, 0.462766)
+texture = ExtResource("3_rfplf")
+
+[node name="TextureRect2" type="TextureRect" parent="health_bar/HBoxContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="health_bar/HBoxContainer/TextureRect2"]
+position = Vector2(692, 128)
+scale = Vector2(0.387931, 0.462766)
+texture = ExtResource("3_rfplf")
+
+[node name="TextureRect3" type="TextureRect" parent="health_bar/HBoxContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="health_bar/HBoxContainer/TextureRect3"]
+position = Vector2(816, 128)
+scale = Vector2(0.387931, 0.462766)
+texture = ExtResource("3_rfplf")
 [node name="PowerUp_Duration" type="Timer" parent="."]
 
 [connection signal="area_entered" from="player_hurtBox" to="." method="_on_area_2d_area_entered"]
