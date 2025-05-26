@@ -10,9 +10,6 @@ const velocidad_max: float = Global_Player.velocidad_max
 const aceleracion: float = Global_Player.aceleracion
 const friccion: float = Global_Player.friccion
 
-# Personas a salvar
-var salvados: int 
-
 # Disparo
 @onready var arma: Node2D = $Arma
 var bala_path=preload("res://entities/player/bala.tscn")
@@ -22,7 +19,9 @@ var direccion_disparo = 1
 var shoot: bool = true
 @onready var cooldown: Timer = $Arma/cooldown
 
+
 func _physics_process(delta: float) -> void:
+		
 	# MOVIMIENTO
 	
 	# Estas variables detectan movimiento en X y en Y
@@ -50,9 +49,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, friccion * delta)
 
 	# DISPARO DEL ARMA
-	if Input.is_action_just_pressed("disparo") and shoot:
+	if Input.is_action_pressed("disparo") and shoot:
 		disparar()
 		shoot = false
+		cooldown.wait_time = 0.4 - (Global_Player.shooter_cooldown)
 		cooldown.start()
 		
 	move_and_slide()
@@ -71,21 +71,21 @@ func _on_cooldown_timeout() -> void:
 	if !shoot:
 		shoot = true
 
-# Muertes y Personas Salvadas
+# Muertes 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" or area.name == "enemy_gun_hitBox":
-		Global_Player.jugador_muerto = true
-		Global_Player.gameover()
-		queue_free()
-		
-	# Persona salvada
-	if area.name == "human_areaBox" :
-		if Global_Player.salvados >= 6:
-			print("Ya estas al maximo.")
+		if Global_Player.invincibility == false:
+			Global_Player.jugador_muerto = true
+			Global_Player.gameover()
+			queue_free()
 		else:
-			Global_Player.salvados += 1
-			salvados == Global_Player.salvados
-			print("Personas salvadas:" + str(salvados) + ("!"))
+			pass
+	
+	if area.name == "shooter_areaBox":
+		Global_Player.shooter_powerup()
+		
+	if area.name == "invincibility_areaBox":
+		Global_Player.invincibility_powerup()
 
 func death_oxygen():
 	if barra_oxigeno.value == 0.0:
@@ -93,8 +93,18 @@ func death_oxygen():
 		Global_Player.gameover()
 		queue_free()
 
+# Power Up
+func _on_power_up_duration_timeout() -> void:
+	if Global_Player.shooter_cooldown == 0.3:
+		Global_Player.shooter_cooldown = 0
+	
+	if Global_Player.invincibility == true:
+		Global_Player.invincibility == false
 # Animacion
 
 func animations_update(movimiento_x):
 	if movimiento_x:
 		sprite_2d.flip_h = movimiento_x < 0
+	
+	if Global_Player.invincibility == true:
+		sprite_2d.modulate = Color(50, 50, 50)

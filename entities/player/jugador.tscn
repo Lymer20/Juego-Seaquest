@@ -23,6 +23,8 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_8o684")
 
 [node name="player_hurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 120
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hurtBox"]
 shape = SubResource("RectangleShape2D_f7wae")
@@ -34,5 +36,8 @@ debug_color = Color(0.884748, 0.00031054, 0.809704, 0.42)
 wait_time = 0.4
 autostart = true
 
+[node name="PowerUp_Duration" type="Timer" parent="."]
+
 [connection signal="area_entered" from="player_hurtBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Arma/cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="PowerUp_Duration" to="." method="_on_power_up_duration_timeout"]

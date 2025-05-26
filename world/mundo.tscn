@@ -54,13 +54,17 @@ offset_top = 664.0
 offset_right = 768.0
 offset_bottom = 691.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_ph1s7")
+max_value = 1000.0
 value = 1.0
 
 [node name="Wave_Spawner" type="Timer" parent="."]
-wait_time = 102.218
-one_shot = true
+wait_time = 5.0
 
 [node name="Humans_Spawner" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="PowerUp_Spawner" type="Timer" parent="."]
 autostart = true
 
 [node name="Score" type="Node" parent="."]
@@ -118,5 +122,7 @@ script = ExtResource("6_nxwut")
 
 [connection signal="body_entered" from="Oxigeno" to="Oxigeno" method="_on_body_entered"]
 [connection signal="body_exited" from="Oxigeno" to="Oxigeno" method="_on_body_exited"]
+[connection signal="timeout" from="Wave_Spawner" to="." method="_on_wave_spawner_timeout"]
 [connection signal="timeout" from="Wave_Spawner" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Humans_Spawner" to="." method="_on_humans_spawner_timeout"]
+[connection signal="timeout" from="PowerUp_Spawner" to="." method="_on_power_up_spawner_timeout"]

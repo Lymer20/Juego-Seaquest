@@ -3,7 +3,9 @@ extends Node2D
 @onready var polygon_2d: Polygon2D = $"StaticBody2D/Colision del Mapa/Polygon2D"
 @onready var wave_spawner_timer: Timer = $Wave_Spawner
 
+var powerup_path = preload("res://spawn_powerup.tscn")
 var humanos = preload("res://spawn_humanos.tscn")
+
 
 #oleadas
 var oleadas = [
@@ -33,9 +35,16 @@ func spawn_humanos():
 	var humano_instance = humanos.instantiate()
 	add_child(humano_instance)
 	
+func spawn_power_up():
+	var powerup_instance = powerup_path.instantiate()
+	add_child(powerup_instance)
+	
 #aqui se llama a la funcion random cada 5 segundos	
 func _on_humans_spawner_timeout() -> void:
 	spawn_humanos()
 	
-func _on_timer_timeout() -> void:
+func _on_wave_spawner_timeout() -> void:
 	spawn_random_wave()
+
+func _on_power_up_spawner_timeout() -> void:
+	spawn_power_up()
