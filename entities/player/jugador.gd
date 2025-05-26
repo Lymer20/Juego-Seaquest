@@ -18,9 +18,6 @@ const friccion: float = Global_Player.friccion
 
 var salvados: int = 0
 
-func _ready():
-	pass
-
 # Disparo
 @onready var arma: Node2D = $Arma
 var bala_path=preload("res://entities/player/bala.tscn")
@@ -32,11 +29,17 @@ var shoot: bool = true
 
 var heart_list: Array [TextureRect]
 var health = 3
+
+func _ready() -> void:
+	var hearts_parent = $health_bar/HBoxContainer
+	for child in hearts_parent.get_children():
+		heart_list.append(child)
+		print(heart_list)
 		
 func update_heart_display():
 	for i in range(heart_list.size()):
 		heart_list[i].visible = i < health
-		
+
 func take_damage():
 	if health > 0:
 		health -= 1
@@ -46,6 +49,7 @@ func take_damage():
 			Global_Player.gameover()
 		else:
 			print("Perdiste una vida, vida restante:" + str(health))
+
 
 func _physics_process(delta: float) -> void:
 		
@@ -126,6 +130,9 @@ func death_oxygen():
 		Global_Player.gameover()
 		queue_free()
 
+func respanw():
+	global_position = Vector2(624, 359)
+	
 # Power Up
 func _on_power_up_duration_timeout() -> void:
 	if shooter_cooldown == 0.3:
