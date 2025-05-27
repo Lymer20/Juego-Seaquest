@@ -8,5 +8,6 @@ var jugador_muerto: bool
 var waves: int = 0
 
 func gameover():
-	if Global_Player.jugador_muerto == true:
+	if Global_Player.jugador_muerto:
 		get_node("/root/Mundo/GameOver_Canvas/GameOver").game_over()
+		print("Game Over")
