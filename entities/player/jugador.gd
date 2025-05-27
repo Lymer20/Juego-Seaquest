@@ -58,9 +58,11 @@ func take_damage():
 		update_heart_display()
 		
 		if health <= 0:
+			Global_Player.jugador_muerto = true
 			Global_Player.gameover()
 		else:
 			print("Perdiste una vida, vida restante:" + str(health))
+			respawn()
 
 
 func _physics_process(delta: float) -> void:
@@ -142,7 +144,7 @@ func death_oxygen():
 		Global_Player.gameover()
 		queue_free()
 
-func respanw():
+func respawn():
 	global_position = Vector2(624, 359)
 	
 # Power Up
