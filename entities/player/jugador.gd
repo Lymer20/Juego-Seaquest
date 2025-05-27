@@ -28,14 +28,26 @@ var shoot: bool = true
 @onready var cooldown: Timer = $Arma/cooldown
 
 var heart_list: Array [TextureRect]
+var max_hearts = 6
 var health = 3
 
-func _ready() -> void:
+
+func _ready() -> void:	
 	var hearts_parent = $health_bar/HBoxContainer
-	for child in hearts_parent.get_children():
-		heart_list.append(child)
-		print(heart_list)
+	var children = hearts_parent.get_children()
+	for i in range(health):
+		heart_list.append(children[i])
 		
+func add_life():
+	if health < max_hearts:
+		health += 1
+		var hearts_parent = $health_bar/HBoxContainer
+		var children = hearts_parent.get_children()
+		
+		# Añade un nuevo corazón si hay espacio
+		if health <= children.size():
+			heart_list.append(children[health - 1])
+
 func update_heart_display():
 	for i in range(heart_list.size()):
 		heart_list[i].visible = i < max(health, 0)
