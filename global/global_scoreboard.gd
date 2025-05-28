@@ -1,6 +1,6 @@
 extends Node
 
-var score: int = 9999
+var score: int = 0
 var highscore: int = 0
 var reset_score: bool = false
 
