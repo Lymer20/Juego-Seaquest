@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bs80h6pf4qjk"]
+[gd_scene load_steps=13 format=3 uid="uid://bs80h6pf4qjk"]
 
 [ext_resource type="Script" uid="uid://qgt7qrtq22rj" path="res://world/mundo.gd" id="1_6ba58"]
 [ext_resource type="PackedScene" uid="uid://cpcjdcnmlpdpb" path="res://entities/player/jugador.tscn" id="2_lgngo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://diq27e0peg062" path="res://world/scores/highscore.gd" id="4_t86mu"]
 [ext_resource type="PackedScene" uid="uid://bvxcakdbbuy1p" path="res://entities/player/game over/game_over.tscn" id="6_m33u3"]
 [ext_resource type="Script" uid="uid://fh05msusyxja" path="res://world/wave/waves.gd" id="6_nxwut"]
+[ext_resource type="PackedScene" uid="uid://dl23nw35yydom" path="res://world/pausa.tscn" id="8_e4rmm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltsvv"]
 size = Vector2(1280, 40)
@@ -133,9 +134,11 @@ label_settings = SubResource("LabelSettings_nxwut")
 horizontal_alignment = 1
 script = ExtResource("6_nxwut")
 
-[node name="GameOver_Canvas" type="CanvasLayer" parent="."]
+[node name="Canvas" type="CanvasLayer" parent="."]
 
-[node name="GameOver" parent="GameOver_Canvas" instance=ExtResource("6_m33u3")]
+[node name="Pausa" parent="Canvas" instance=ExtResource("8_e4rmm")]
+
+[node name="GameOver" parent="Canvas" instance=ExtResource("6_m33u3")]
 
 [connection signal="body_entered" from="Oxigeno" to="Oxigeno" method="_on_body_entered"]
 [connection signal="body_exited" from="Oxigeno" to="Oxigeno" method="_on_body_exited"]

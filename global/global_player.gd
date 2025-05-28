@@ -7,7 +7,9 @@ var salvados: int = 0
 var jugador_muerto: bool
 var waves: int = 0
 
+func pausa():
+	get_node("/root/Mundo/Canvas/Pausa").pausa()
+
 func gameover():
-	if Global_Player.jugador_muerto:
-		get_node("/root/Mundo/GameOver_Canvas/GameOver").game_over()
-		print("Game Over")
+	get_node("/root/Mundo/Canvas/GameOver").game_over()
+	print("Game Over")

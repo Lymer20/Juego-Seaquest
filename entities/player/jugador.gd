@@ -37,16 +37,6 @@ func _ready() -> void:
 	var children = hearts_parent.get_children()
 	for i in range(health):
 		heart_list.append(children[i])
-		
-func add_life():
-	if health < max_hearts:
-		health += 1
-		var hearts_parent = $health_bar/HBoxContainer
-		var children = hearts_parent.get_children()
-		
-		# Añade un nuevo corazón si hay espacio
-		if health <= children.size():
-			heart_list.append(children[health - 1])
 
 func update_heart_display():
 	for i in range(heart_list.size()):
@@ -66,7 +56,6 @@ func take_damage():
 
 
 func _physics_process(delta: float) -> void:
-		
 	# MOVIMIENTO
 	# Estas variables detectan movimiento en X y en Y
 	var movimiento_x := Input.get_axis("izquierda", "derecha")
@@ -98,6 +87,9 @@ func _physics_process(delta: float) -> void:
 		shoot = false
 		cooldown.wait_time = 0.4 - (shooter_cooldown)
 		cooldown.start()
+		
+	if Input.is_action_just_pressed("pausa"):
+		Global_Player.pausa()
 		
 	move_and_slide()
 	animations_update(movimiento_x)

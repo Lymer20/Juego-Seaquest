@@ -20,12 +20,14 @@ func update_rescued():
 		humanos.visible = i < Global_Player.salvados
 
 func _process(delta):
+	for i in range(MAX_RESCUED):
+		humanos_container.get_child(i).visible = false
+		update_rescued()
 	position.x += velocidad * direccion * delta
 	vuelta_huida()
 
 func _on_sale_de_vista_screen_exited() -> void:
 	queue_free()
-
 
 func _on_enemy_detect_area_entered(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" || area.name == "enemy_gun_hitBox":
@@ -40,6 +42,7 @@ func _on_enemy_detect_area_entered(area: Area2D) -> void:
 			
 	if area.name == "Muerte_por_area":
 		queue_free()
+
 func _on_enemy_detect_area_exited(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" || area.name == "enemy_gun_hitBox":
 		velocidad = velocidad / 2
