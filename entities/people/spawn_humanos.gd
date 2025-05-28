@@ -19,7 +19,7 @@ func _ready():
 ## oleadas ya predeterminadas. Aprender y hacerlo primero con la de los enemigos
 func spawn_oleada():
 	var cantidad_humanos = randi_range(1, 4) 
-	var pos_y = randf_range(200, 434)
+	var pos_y = randf_range(215, 434)
 	var humano_direction = randi_range(0, 1)
 	
 	for i in range(cantidad_humanos):

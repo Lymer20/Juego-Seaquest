@@ -69,30 +69,6 @@ position = Vector2(568, 104)
 scale = Vector2(0.183908, 0.230496)
 texture = ExtResource("3_rfplf")
 
-[node name="heart4" type="TextureRect" parent="health_bar/HBoxContainer"]
-layout_mode = 2
-
-[node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart4"]
-position = Vector2(620, 104)
-scale = Vector2(0.183908, 0.230496)
-texture = ExtResource("3_rfplf")
-
-[node name="heart5" type="TextureRect" parent="health_bar/HBoxContainer"]
-layout_mode = 2
-
-[node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart5"]
-position = Vector2(672, 104)
-scale = Vector2(0.183908, 0.230496)
-texture = ExtResource("3_rfplf")
-
-[node name="heart6" type="TextureRect" parent="health_bar/HBoxContainer"]
-layout_mode = 2
-
-[node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart6"]
-position = Vector2(724, 104)
-scale = Vector2(0.183908, 0.230496)
-texture = ExtResource("3_rfplf")
-
 [connection signal="area_entered" from="player_hurtBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Arma/cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="PowerUp_Duration" to="." method="_on_power_up_duration_timeout"]
