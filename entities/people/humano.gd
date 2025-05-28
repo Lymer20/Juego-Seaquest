@@ -2,9 +2,21 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var vuelta_automatica: Timer = $Vuelta_Automatica
 @onready var raycast_huida: RayCast2D = $Vuelta_Huida
+@onready var humanos_container = $humans_bar/HBoxContainer
+const MAX_RESCUED = 6
 
 var velocidad = 75
 var direccion = 1  
+
+func _ready():
+	for i in range(MAX_RESCUED):
+		humanos_container.get_child(i).visible = false
+		update_rescued()
+
+func update_rescued():
+	for i in range(MAX_RESCUED):
+		var humanos = humanos_container.get_child(i)
+		humanos.visible = i < Global_Player.salvados
 
 func _process(delta):
 	position.x += velocidad * direccion * delta
@@ -13,14 +25,16 @@ func _process(delta):
 func _on_sale_de_vista_screen_exited() -> void:
 	queue_free()
 
+
 func _on_enemy_detect_area_entered(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" || area.name == "enemy_gun_hitBox":
 		velocidad = velocidad * 2
 	
 	if area.name == "player_hurtBox":
 		var personas_salvadas: int = Global_Player.salvados 
-		if Global_Player.salvados < 6:
+		if Global_Player.salvados < MAX_RESCUED:
 			Global_Player.salvados += 1
+			update_rescued()
 			queue_free()
 		else:
 			print("No se puede, ya salvaste la cantidad maxima")	
@@ -41,5 +55,6 @@ func vuelta_huida():
 		print("Hay colision")
 		scale.x = -scale.x
 		direccion = direccion * -1
+
 	move_and_slide()
 	
