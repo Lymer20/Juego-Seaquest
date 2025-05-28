@@ -49,7 +49,7 @@ offset_bottom = 40.0
 layout_mode = 2
 
 [node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart"]
-position = Vector2(600, 112)
+position = Vector2(472, 104)
 scale = Vector2(0.183908, 0.230496)
 texture = ExtResource("3_rfplf")
 
@@ -57,7 +57,7 @@ texture = ExtResource("3_rfplf")
 layout_mode = 2
 
 [node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart2"]
-position = Vector2(656, 112)
+position = Vector2(520, 104.5)
 scale = Vector2(0.183908, 0.230496)
 texture = ExtResource("3_rfplf")
 
@@ -65,7 +65,7 @@ texture = ExtResource("3_rfplf")
 layout_mode = 2
 
 [node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart3"]
-position = Vector2(712, 112)
+position = Vector2(568, 104)
 scale = Vector2(0.183908, 0.230496)
 texture = ExtResource("3_rfplf")
 

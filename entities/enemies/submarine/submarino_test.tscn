@@ -11,7 +11,7 @@ size = Vector2(48, 48)
 
 [node name="Submarino_Test" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 0
+collision_mask = 128
 script = ExtResource("1_2snnq")
 
 [node name="oportunidad_disparo" type="Timer" parent="."]
@@ -29,7 +29,7 @@ debug_color = Color(0.73694, 0.468711, 9.62615e-07, 0.42)
 
 [node name="enemy_hitBox" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 6
+collision_mask = 134
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitBox"]
 shape = SubResource("RectangleShape2D_2snnq")

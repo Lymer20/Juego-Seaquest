@@ -14,3 +14,6 @@ func _on_enemy_hit_box_area_entered(area: Area2D) -> void:
 			score_ganado = (valor_enemigo_tiburon + (Global_Player.waves * 10))
 		Global_Scoreboard.score += score_ganado
 		queue_free()
+		
+	if area.name == "Muerte_por_area":
+		queue_free()

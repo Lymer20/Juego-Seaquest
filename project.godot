@@ -73,6 +73,7 @@ revivir={
 2d_physics/layer_5="Human"
 2d_physics/layer_6="Bullet_Enemy"
 2d_physics/layer_7="Power_Up"
+2d_physics/layer_8="Colision_del_suelo"
 
 [rendering]
 

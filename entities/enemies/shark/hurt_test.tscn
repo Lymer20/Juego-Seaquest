@@ -18,7 +18,7 @@ size = Vector2(48, 48)
 
 [node name="Hurt_Test" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 0
+collision_mask = 128
 script = ExtResource("1_qt07b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -45,7 +45,7 @@ texture = ExtResource("2_42pe2")
 position = Vector2(-0.999906, -0.0136974)
 rotation = 1.58449
 collision_layer = 8
-collision_mask = 6
+collision_mask = 134
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/enemy_hitBox"]
 shape = SubResource("RectangleShape2D_b28pw")
