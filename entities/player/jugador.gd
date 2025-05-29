@@ -8,6 +8,8 @@ var shooter_cooldown = 0.0
 @onready var sfx_powerup: AudioStreamPlayer2D = $sfx_powerup
 @onready var sfx_normalwave: AudioStreamPlayer = $"../sfx_normalwave"
 @onready var sfx_hardwave: AudioStreamPlayer = $"../sfx_hardwave"
+@onready var sfx_funnydeath: AudioStreamPlayer2D = $sfx_funnydeath
+@onready var player_hurtBox: CollisionShape2D = $player_hurtBox/CollisionShape2D
 
 @export var dentro_del_area = false
 @onready var barra_oxigeno: ProgressBar = $"../Oxigeno/barra de oxigeno/ProgressBar"
@@ -76,7 +78,6 @@ func take_damage():
 			Global_Player.gameover()
 		else:
 			print("Perdiste una vida, vida restante:" + str(Global_Player.health))
-			
 			get_tree().paused = true
 			reinicio.start()
 #humanos
@@ -84,8 +85,6 @@ func update_rescued():
 	for i in range(MAX_RESCUED):
 		var humanos = humanos_container.get_child(i)
 		humanos.visible = i < Global_Player.salvados
-		
-
 
 func _physics_process(delta: float) -> void:
 	humanos_container.visible = Global_Player.salvados > 0
@@ -145,10 +144,15 @@ func _on_cooldown_timeout() -> void:
 	if !shoot:
 		shoot = true
 
-# Muertes 
+# Muertes y power ups
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" or area.name == "enemy_gun_hitBox":
 		if invincibility == false:
+			animated_sprite_2d.play("death")
+			animated_sprite_2d.scale.y = animated_sprite_2d.scale.y*2
+			animated_sprite_2d.scale.x = animated_sprite_2d.scale.x*2
+			sfx_funnydeath.play()
+			player_hurtBox.set_deferred("disabled", true)
 			if Global_Player.health > 0:
 				take_damage()
 			else:

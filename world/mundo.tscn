@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bs80h6pf4qjk"]
+[gd_scene load_steps=21 format=3 uid="uid://bs80h6pf4qjk"]
 
 [ext_resource type="Script" uid="uid://qgt7qrtq22rj" path="res://world/mundo.gd" id="1_6ba58"]
 [ext_resource type="Texture2D" uid="uid://cqkinqjq17v10" path="res://sprites/spritesBackgroundGame-Sheet.png" id="2_h0l4y"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dl23nw35yydom" path="res://world/pausa.tscn" id="8_e4rmm"]
 [ext_resource type="AudioStream" uid="uid://c3ve1vj1pi0fo" path="res://audio/sfx_hardwave_deltarune.wav" id="10_6tgyw"]
 [ext_resource type="AudioStream" uid="uid://j8y6lb2qxu6t" path="res://audio/sfx_normalwave_tunic.wav" id="11_6tgyw"]
+[ext_resource type="AudioStream" uid="uid://b7h1gc0wr7o5r" path="res://audio/sfx_allsaved.wav" id="12_dwjv2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lmkqh"]
 atlas = ExtResource("2_h0l4y")
@@ -196,6 +197,10 @@ volume_db = -10.0
 [node name="sfx_normalwave" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_6tgyw")
 volume_db = -10.0
+
+[node name="sfx_allsaved" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("12_dwjv2")
 
 [connection signal="body_entered" from="Oxigeno" to="Oxigeno" method="_on_body_entered"]
 [connection signal="body_exited" from="Oxigeno" to="Oxigeno" method="_on_body_exited"]
