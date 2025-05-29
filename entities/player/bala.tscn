@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://gmxwws8f0ecu"]
 
 [ext_resource type="Script" uid="uid://cqlbl4ust42ne" path="res://entities/player/bala.gd" id="1_ag3k0"]
-[ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_tqo1u"]
+[ext_resource type="Texture2D" uid="uid://i2ksu0w2f62s" path="res://sprites/spritesJugador_Disparo-Sheet.png" id="2_kfik0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfik0"]
-size = Vector2(32, 16)
+size = Vector2(48, 16)
 
 [node name="Bala" type="CharacterBody2D"]
 collision_layer = 4
@@ -12,8 +12,8 @@ collision_mask = 0
 script = ExtResource("1_ag3k0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.125)
-texture = ExtResource("2_tqo1u")
+scale = Vector2(0.64, 0.738462)
+texture = ExtResource("2_kfik0")
 
 [node name="gun_hitBox" type="Area2D" parent="."]
 collision_layer = 4

@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvxcakdbbuy1p"]
+[gd_scene load_steps=11 format=3 uid="uid://bvxcakdbbuy1p"]
 
 [ext_resource type="Script" uid="uid://c11niutqdn1jk" path="res://entities/player/game over/game_over.gd" id="1_y26ei"]
 [ext_resource type="Script" uid="uid://diq27e0peg062" path="res://world/scores/highscore.gd" id="2_yxx3c"]
 [ext_resource type="Script" uid="uid://dbq10vhocbru3" path="res://world/scores/score.gd" id="3_j7dmf"]
+[ext_resource type="AudioStream" uid="uid://b84g60s1dgof8" path="res://audio/sfx_gameover_sonic.wav" id="4_yu6il"]
+[ext_resource type="AudioStream" uid="uid://dymmpo6qhni4q" path="res://audio/sfx_selection.mp3" id="5_ingkc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yxx3c"]
 font_size = 80
@@ -111,5 +113,16 @@ label_settings = SubResource("LabelSettings_ingkc")
 horizontal_alignment = 1
 script = ExtResource("3_j7dmf")
 
+[node name="sfx_gameover" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_yu6il")
+volume_db = -11.243
+
+[node name="sfx_selection" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ingkc")
+volume_db = -10.0
+
+[connection signal="mouse_entered" from="Boton_Menu" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Boton_Menu" to="." method="_on_boton_menu_pressed"]
+[connection signal="mouse_entered" from="Boton_Reiniciar" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Boton_Reiniciar" to="." method="_on_boton_reiniciar_pressed"]

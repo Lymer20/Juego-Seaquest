@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bs80h6pf4qjk"]
+[gd_scene load_steps=20 format=3 uid="uid://bs80h6pf4qjk"]
 
 [ext_resource type="Script" uid="uid://qgt7qrtq22rj" path="res://world/mundo.gd" id="1_6ba58"]
+[ext_resource type="Texture2D" uid="uid://cqkinqjq17v10" path="res://sprites/spritesBackgroundGame-Sheet.png" id="2_h0l4y"]
 [ext_resource type="PackedScene" uid="uid://cpcjdcnmlpdpb" path="res://entities/player/jugador.tscn" id="2_lgngo"]
 [ext_resource type="Script" uid="uid://css13cfq0ba67" path="res://world/oxigeno.gd" id="3_ltsvv"]
 [ext_resource type="Script" uid="uid://dbq10vhocbru3" path="res://world/scores/score.gd" id="4_re12h"]
@@ -8,6 +9,37 @@
 [ext_resource type="PackedScene" uid="uid://bvxcakdbbuy1p" path="res://entities/player/game over/game_over.tscn" id="6_m33u3"]
 [ext_resource type="Script" uid="uid://fh05msusyxja" path="res://world/wave/waves.gd" id="6_nxwut"]
 [ext_resource type="PackedScene" uid="uid://dl23nw35yydom" path="res://world/pausa.tscn" id="8_e4rmm"]
+[ext_resource type="AudioStream" uid="uid://c3ve1vj1pi0fo" path="res://audio/sfx_hardwave_deltarune.wav" id="10_6tgyw"]
+[ext_resource type="AudioStream" uid="uid://j8y6lb2qxu6t" path="res://audio/sfx_normalwave_tunic.wav" id="11_6tgyw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmkqh"]
+atlas = ExtResource("2_h0l4y")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tgyw"]
+atlas = ExtResource("2_h0l4y")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwjv2"]
+atlas = ExtResource("2_h0l4y")
+region = Rect2(2560, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dm2gk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmkqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tgyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwjv2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltsvv"]
 size = Vector2(1280, 40)
@@ -31,8 +63,11 @@ position = Vector2(-346, -477.264)
 scale = Vector2(1.32251, 2.47051)
 polygon = PackedVector2Array(261.624, 193.184, 1229.48, 193.184, 1229.48, 484.622, 1223.43, 484.622, 1223.43, 257.948, 267.673, 257.948, 267.673, 419.858, 1223.43, 419.858, 1223.43, 484.622, 261.624, 484.622)
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/Colision del Mapa"]
-visible = false
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D/Colision del Mapa"]
+position = Vector2(745.552, 338.903)
+scale = Vector2(0.756138, 0.404775)
+sprite_frames = SubResource("SpriteFrames_dm2gk")
+frame_progress = 0.407554
 
 [node name="StaticBody2D" type="StaticBody2D" parent="StaticBody2D"]
 collision_layer = 128
@@ -57,7 +92,7 @@ collision_mask = 2
 script = ExtResource("3_ltsvv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Oxigeno"]
-position = Vector2(648, 140)
+position = Vector2(648, 128)
 shape = SubResource("RectangleShape2D_ltsvv")
 debug_color = Color(0.662919, 0.513129, 0, 0.42)
 
@@ -134,16 +169,37 @@ label_settings = SubResource("LabelSettings_nxwut")
 horizontal_alignment = 1
 script = ExtResource("6_nxwut")
 
+[node name="El unico proposito de esto es el efecto bonito, literalmente" type="Node" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="El unico proposito de esto es el efecto bonito, literalmente"]
+position = Vector2(-3760.21, -4936.86)
+scale = Vector2(7.25259, 16.2724)
+color = Color(0, 0.305882, 0.745098, 0.392157)
+polygon = PackedVector2Array(515.686, 316.236, 697.159, 316.236, 697.159, 332.437, 697.159, 348.618, 606.212, 348.618, 515.686, 348.618)
+
+[node name="Polygon2D2" type="Polygon2D" parent="El unico proposito de esto es el efecto bonito, literalmente"]
+position = Vector2(-3808, 168)
+scale = Vector2(7.31789, 0.125654)
+color = Color(1, 1, 1, 0.635294)
+polygon = PackedVector2Array(515.686, 316.236, 606.428, 316.236, 684.267, 316.236, 697.159, 316.236, 697.159, 348.618, 515.686, 348.618)
+
 [node name="Canvas" type="CanvasLayer" parent="."]
 
 [node name="Pausa" parent="Canvas" instance=ExtResource("8_e4rmm")]
 
 [node name="GameOver" parent="Canvas" instance=ExtResource("6_m33u3")]
 
+[node name="sfx_hardwave" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_6tgyw")
+volume_db = -10.306
+
+[node name="sfx_normalwave" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_6tgyw")
+
 [connection signal="body_entered" from="Oxigeno" to="Oxigeno" method="_on_body_entered"]
 [connection signal="body_exited" from="Oxigeno" to="Oxigeno" method="_on_body_exited"]
 [connection signal="timeout" from="Oxigeno/Tiempo_Reinicio" to="Oxigeno" method="_on_tiempo_reinicio_timeout"]
-[connection signal="timeout" from="Wave_Spawner" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Wave_Spawner" to="." method="_on_wave_spawner_timeout"]
+[connection signal="timeout" from="Wave_Spawner" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Humans_Spawner" to="." method="_on_humans_spawner_timeout"]
 [connection signal="timeout" from="PowerUp_Spawner" to="." method="_on_power_up_spawner_timeout"]

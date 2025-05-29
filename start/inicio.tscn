@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://8rlms42usa1"]
+[gd_scene load_steps=5 format=3 uid="uid://8rlms42usa1"]
 
 [ext_resource type="Script" uid="uid://cx3woj3yf4kw4" path="res://start/boton_inicio.gd" id="1_ylum6"]
+[ext_resource type="AudioStream" uid="uid://bx304cfqddglc" path="res://audio/sfx_menu_fnaf.wav" id="2_8wodb"]
+[ext_resource type="AudioStream" uid="uid://dymmpo6qhni4q" path="res://audio/sfx_selection.mp3" id="3_yg2l4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_riyrf"]
 font_size = 100
@@ -37,3 +39,14 @@ offset_bottom = 592.0
 theme_override_font_sizes/font_size = 100
 text = "MUGA"
 script = ExtResource("1_ylum6")
+
+[node name="sfx_menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8wodb")
+volume_db = -3.748
+autoplay = true
+
+[node name="sfx_selection" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yg2l4")
+volume_db = -10.0
+
+[connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]

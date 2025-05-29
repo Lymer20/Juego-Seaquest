@@ -1,13 +1,106 @@
-[gd_scene load_steps=5 format=3 uid="uid://cy30ihsq4pxtk"]
+[gd_scene load_steps=19 format=3 uid="uid://cy30ihsq4pxtk"]
 
 [ext_resource type="Script" uid="uid://cg0heuwp1un58" path="res://entities/enemies/submarine/submarino_test.gd" id="1_2snnq"]
-[ext_resource type="Texture2D" uid="uid://boqk3o2ahfo38" path="res://submarino-enemigo.png" id="2_5bdtd"]
+[ext_resource type="Texture2D" uid="uid://ccqgjg6uus0pt" path="res://sprites/spritesSubmarinoEnemigo-Sheet.png" id="2_5bdtd"]
+[ext_resource type="AudioStream" uid="uid://c6oubbl75718k" path="res://audio/sfx_enemybullet.wav" id="3_e03p3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e03p3"]
+atlas = ExtResource("2_5bdtd")
+region = Rect2(0, 0, 95, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsmcv"]
+atlas = ExtResource("2_5bdtd")
+region = Rect2(95, 0, 95, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi6ss"]
+atlas = ExtResource("2_5bdtd")
+region = Rect2(190, 0, 95, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27djk"]
+atlas = ExtResource("2_5bdtd")
+region = Rect2(285, 0, 95, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nksl"]
+atlas = ExtResource("2_5bdtd")
+region = Rect2(0, 55, 95, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k58a"]
+atlas = ExtResource("2_5bdtd")
+region = Rect2(95, 55, 95, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s4qo"]
+atlas = ExtResource("2_5bdtd")
+region = Rect2(190, 55, 95, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srm00"]
+atlas = ExtResource("2_5bdtd")
+region = Rect2(285, 55, 95, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3k6c"]
+atlas = ExtResource("2_5bdtd")
+region = Rect2(0, 110, 95, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwjo2"]
+atlas = ExtResource("2_5bdtd")
+region = Rect2(95, 110, 95, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1142i"]
+atlas = ExtResource("2_5bdtd")
+region = Rect2(190, 110, 95, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lan1"]
+atlas = ExtResource("2_5bdtd")
+region = Rect2(285, 110, 95, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0me3h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e03p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsmcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi6ss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27djk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nksl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k58a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s4qo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srm00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3k6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwjo2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1142i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lan1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hccry"]
-size = Vector2(48, 48)
+size = Vector2(61, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2snnq"]
-size = Vector2(48, 48)
+size = Vector2(61, 42)
 
 [node name="Submarino_Test" type="CharacterBody2D"]
 collision_layer = 8
@@ -18,12 +111,13 @@ script = ExtResource("1_2snnq")
 wait_time = 3.0
 autostart = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-7.15256e-07, 2)
-scale = Vector2(0.0527344, 0.0585938)
-texture = ExtResource("2_5bdtd")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.673684, 0.872727)
+sprite_frames = SubResource("SpriteFrames_0me3h")
+frame_progress = 0.861256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_hccry")
 debug_color = Color(0.73694, 0.468711, 9.62615e-07, 0.42)
 
@@ -32,10 +126,15 @@ collision_layer = 8
 collision_mask = 134
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitBox"]
+position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_2snnq")
 debug_color = Color(0.831373, 0, 0.568627, 0.203922)
 
 [node name="Arma" type="Node2D" parent="."]
+
+[node name="sfx_enemybullet" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_e03p3")
+volume_db = -10.0
 
 [connection signal="timeout" from="oportunidad_disparo" to="." method="_on_oportunidad_disparo_timeout"]
 [connection signal="area_entered" from="enemy_hitBox" to="." method="_on_enemy_s_hit_box_area_entered"]

@@ -1,7 +1,10 @@
 extends CharacterBody2D
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var velocidad = 75
 var direccion = 1  
+
+func _ready():
+	animated_sprite_2d.play("default")
 
 func _process(delta):
 	position.x += velocidad * direccion * delta

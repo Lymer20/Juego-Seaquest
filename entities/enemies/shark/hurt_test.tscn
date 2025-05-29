@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwmpvj0whpvbv"]
+[gd_scene load_steps=14 format=3 uid="uid://cwmpvj0whpvbv"]
 
 [ext_resource type="Script" uid="uid://dglrpf1y73x4c" path="res://entities/enemies/shark/hurt_test.gd" id="1_qt07b"]
-[ext_resource type="Texture2D" uid="uid://1ie62othawls" path="res://pez1.png" id="2_42pe2"]
 [ext_resource type="Script" uid="uid://q8fjd01cc7fb" path="res://entities/enemies/shark/path_follow_2d.gd" id="2_suurd"]
+[ext_resource type="Texture2D" uid="uid://b8xdc1hpd2je8" path="res://sprites/spritesPiranha-Sheet.png" id="3_suurd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rfjf"]
 size = Vector2(128, 128)
@@ -12,6 +12,56 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, -39, 0, 0, 0, 0, 0, 39, -0.0486088, -2.60057, 0.0486088, 2.60057, -1, 0, 0, 0, 0, 0, -1, 0)
 }
 point_count = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dwl1"]
+atlas = ExtResource("3_suurd")
+region = Rect2(0, 0, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duhtg"]
+atlas = ExtResource("3_suurd")
+region = Rect2(40, 0, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hutcq"]
+atlas = ExtResource("3_suurd")
+region = Rect2(80, 0, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqlix"]
+atlas = ExtResource("3_suurd")
+region = Rect2(0, 37, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dosf"]
+atlas = ExtResource("3_suurd")
+region = Rect2(40, 37, 40, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hc33"]
+atlas = ExtResource("3_suurd")
+region = Rect2(80, 37, 40, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6s5lr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dwl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duhtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hutcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqlix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dosf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hc33")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b28pw"]
 size = Vector2(48, 48)
@@ -35,11 +85,11 @@ rotation = -1.58449
 rotates = false
 script = ExtResource("2_suurd")
 
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
-position = Vector2(-0.984497, -1.13859)
-rotation = 1.58449
-scale = Vector2(0.0563965, 0.0605469)
-texture = ExtResource("2_42pe2")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(2.15354, -0.907085)
+rotation = 1.58301
+scale = Vector2(1.68455, 1.80251)
+sprite_frames = SubResource("SpriteFrames_6s5lr")
 
 [node name="enemy_hitBox" type="Area2D" parent="Path2D/PathFollow2D"]
 position = Vector2(-0.999906, -0.0136974)

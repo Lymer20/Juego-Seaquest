@@ -1,22 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://bu5kp7j6gmbfu"]
+[gd_scene load_steps=9 format=3 uid="uid://bu5kp7j6gmbfu"]
 
 [ext_resource type="Script" uid="uid://bbr7lue5a4uk7" path="res://world/power_ups/power_up_shooter.gd" id="1_vemsm"]
-[ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_8i602"]
+[ext_resource type="Texture2D" uid="uid://drepq2j7yxsea" path="res://sprites/spritespowerupshoot-Sheet.png" id="2_c5qts"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu0oh"]
+atlas = ExtResource("2_c5qts")
+region = Rect2(0, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hchxb"]
+atlas = ExtResource("2_c5qts")
+region = Rect2(75, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlxoh"]
+atlas = ExtResource("2_c5qts")
+region = Rect2(150, 0, 75, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hy6ks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu0oh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hchxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlxoh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwgvp"]
-size = Vector2(32, 32)
+size = Vector2(38, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vemsm"]
-size = Vector2(32, 32)
+size = Vector2(38, 32)
 
 [node name="PowerUp_Shooter" type="CharacterBody2D"]
 collision_layer = 64
 collision_mask = 0
 script = ExtResource("1_vemsm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_8i602")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.853333, 0.738462)
+sprite_frames = SubResource("SpriteFrames_hy6ks")
+frame = 2
+frame_progress = 0.78088
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xwgvp")

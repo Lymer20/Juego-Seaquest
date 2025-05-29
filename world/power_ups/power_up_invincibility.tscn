@@ -1,22 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://d08mlfwow2t3o"]
+[gd_scene load_steps=9 format=3 uid="uid://d08mlfwow2t3o"]
 
 [ext_resource type="Script" uid="uid://bq017oqup2awu" path="res://world/power_ups/power_up_invincibility.gd" id="1_1ihjw"]
-[ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_dhlg1"]
+[ext_resource type="Texture2D" uid="uid://byp7camhmp1gc" path="res://sprites/spritespowerupinv-Sheet.png" id="2_n5emf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dielf"]
+atlas = ExtResource("2_n5emf")
+region = Rect2(0, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eou20"]
+atlas = ExtResource("2_n5emf")
+region = Rect2(75, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f41b"]
+atlas = ExtResource("2_n5emf")
+region = Rect2(150, 0, 75, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e6e57"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dielf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eou20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f41b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7nqc"]
-size = Vector2(32, 32)
+size = Vector2(38, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uop50"]
-size = Vector2(32, 32)
+size = Vector2(38, 32)
 
 [node name="PowerUp_Invincibility" type="CharacterBody2D"]
 collision_layer = 64
 collision_mask = 0
 script = ExtResource("1_1ihjw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_dhlg1")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.57628e-07, -3.57628e-07)
+scale = Vector2(0.853333, 0.738462)
+sprite_frames = SubResource("SpriteFrames_e6e57")
+frame = 2
+frame_progress = 0.60194
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_k7nqc")

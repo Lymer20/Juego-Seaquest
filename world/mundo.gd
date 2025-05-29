@@ -1,9 +1,11 @@
 extends Node2D
 @onready var colision_del_mapa: CollisionPolygon2D = $"StaticBody2D/Colision del Mapa"
-@onready var polygon_2d: Polygon2D = $"StaticBody2D/Colision del Mapa/Polygon2D"
+@onready var animated_sprite_2d: AnimatedSprite2D = $"StaticBody2D/Colision del Mapa/AnimatedSprite2D"
 @onready var wave_spawner_timer: Timer = $Wave_Spawner
 @onready var humans_spawner_timer: Timer = $Humans_Spawner
 @onready var powerup_spawner_timer: Timer = $PowerUp_Spawner
+@onready var sfx_hardwave: AudioStreamPlayer = $sfx_hardwave
+@onready var sfx_normalwave: AudioStreamPlayer = $sfx_normalwave
 
 var powerup_path = preload("res://world/power_ups/spawn_powerup.tscn")
 var humanos = preload("res://entities/people/spawn_humanos.tscn")
@@ -12,12 +14,18 @@ var humanos = preload("res://entities/people/spawn_humanos.tscn")
 var oleadas = preload("res://entities/enemies/waves/oleadas.tscn")
 
 func _ready():
+	if Global_Player.waves >= 6:
+		sfx_hardwave.play()
+	else:
+		sfx_normalwave.play()
+		
 	wave_spawner_timer.wait_time = 5 - (Global_Player.waves * 1.5)/10
 	wave_spawner_timer.start()
 	humans_spawner_timer.wait_time = 4 - (Global_Player.waves)/10
 	humans_spawner_timer.start()
-	powerup_spawner_timer.wait_time = 30 - (Global_Player.waves * 1.20)
+	powerup_spawner_timer.wait_time = 8 - (Global_Player.waves * 1.20)
 	powerup_spawner_timer.start()
+	animated_sprite_2d.play("default")
 
 #funcion que elije aleatoriamente cual oleada usar
 func spawn_random_wave():
