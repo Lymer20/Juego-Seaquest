@@ -2,25 +2,19 @@ extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var vuelta_automatica: Timer = $Vuelta_Automatica
 @onready var raycast_huida: RayCast2D = $Vuelta_Huida
-@onready var humanos_container = $humans_bar/HBoxContainer
-const MAX_RESCUED = 6
+@onready var jugador = get_node("/root/Mundo/Jugador")
 
 var velocidad_inicial = 75
 var velocidad = velocidad_inicial + (velocidad_inicial * Global_Player.waves)/15
 var direccion = 1 
+var max_rescued = 6
 
 func _ready() -> void:
-	humanos_container.visible = false 
-
-func update_rescued():
-	for i in range(MAX_RESCUED):
-		var humanos = humanos_container.get_child(i)
-		humanos.visible = i < Global_Player.salvados
-
+	if jugador:
+		max_rescued = jugador.MAX_RESCUED
 
 func _process(delta):
-	humanos_container.visible = Global_Player.salvados > 0
-	update_rescued()
+	
 	position.x += velocidad * direccion * delta
 	vuelta_huida()
 
@@ -33,9 +27,9 @@ func _on_enemy_detect_area_entered(area: Area2D) -> void:
 	
 	if area.name == "player_hurtBox":
 		var personas_salvadas: int = Global_Player.salvados 
-		if Global_Player.salvados < MAX_RESCUED:
+		if Global_Player.salvados < max_rescued:
 			Global_Player.salvados += 1
-			update_rescued()
+			jugador.update_rescued()
 			queue_free()
 			
 	if area.name == "Muerte_por_area":
