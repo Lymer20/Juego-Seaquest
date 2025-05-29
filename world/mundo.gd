@@ -23,7 +23,7 @@ func _ready():
 	wave_spawner_timer.start()
 	humans_spawner_timer.wait_time = 4 - (Global_Player.waves)/10
 	humans_spawner_timer.start()
-	powerup_spawner_timer.wait_time = 8 - (Global_Player.waves * 1.20)
+	powerup_spawner_timer.wait_time = 30 - (Global_Player.waves * 1.20)
 	powerup_spawner_timer.start()
 	animated_sprite_2d.play("default")
 

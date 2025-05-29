@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://qgt7qrtq22rj" path="res://world/mundo.gd" id="1_6ba58"]
 [ext_resource type="Texture2D" uid="uid://cqkinqjq17v10" path="res://sprites/spritesBackgroundGame-Sheet.png" id="2_h0l4y"]
-[ext_resource type="PackedScene" uid="uid://cpcjdcnmlpdpb" path="res://entities/player/jugador.tscn" id="2_lgngo"]
+[ext_resource type="PackedScene" uid="uid://b3ty4j5ndkkto" path="res://entities/player/jugador.tscn" id="2_lgngo"]
 [ext_resource type="Script" uid="uid://css13cfq0ba67" path="res://world/oxigeno.gd" id="3_ltsvv"]
 [ext_resource type="Script" uid="uid://dbq10vhocbru3" path="res://world/scores/score.gd" id="4_re12h"]
 [ext_resource type="Script" uid="uid://diq27e0peg062" path="res://world/scores/highscore.gd" id="4_t86mu"]
@@ -191,10 +191,11 @@ polygon = PackedVector2Array(515.686, 316.236, 606.428, 316.236, 684.267, 316.23
 
 [node name="sfx_hardwave" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_6tgyw")
-volume_db = -10.306
+volume_db = -10.0
 
 [node name="sfx_normalwave" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_6tgyw")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Oxigeno" to="Oxigeno" method="_on_body_entered"]
 [connection signal="body_exited" from="Oxigeno" to="Oxigeno" method="_on_body_exited"]
