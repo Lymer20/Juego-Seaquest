@@ -7,6 +7,7 @@ var valor_humano: int = 50
 var jugador_path=preload("res://entities/player/jugador.tscn")
 var jugador = jugador_path.instantiate()
 @onready var tiempo_reinicio: Timer = $Tiempo_Reinicio
+@onready var sfx_allsaved: AudioStreamPlayer2D = $"../sfx_allsaved"
 
 
 func _ready():
@@ -35,6 +36,7 @@ func _on_body_entered(body: Node) -> void:
 		# Punto de siguiente oleada, donde logró salvar a todos
 		elif Global_Player.salvados >= 6:
 			
+			sfx_allsaved.play()
 			var score_ganado: int 
 			
 			if Global_Player.waves >= 19:
