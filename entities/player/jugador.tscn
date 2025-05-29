@@ -49,7 +49,7 @@ offset_bottom = 40.0
 layout_mode = 2
 
 [node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart"]
-position = Vector2(472, 104)
+position = Vector2(576, 112)
 scale = Vector2(0.183908, 0.230496)
 texture = ExtResource("3_rfplf")
 
@@ -57,7 +57,7 @@ texture = ExtResource("3_rfplf")
 layout_mode = 2
 
 [node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart2"]
-position = Vector2(520, 104.5)
+position = Vector2(628, 112)
 scale = Vector2(0.183908, 0.230496)
 texture = ExtResource("3_rfplf")
 
@@ -65,10 +65,39 @@ texture = ExtResource("3_rfplf")
 layout_mode = 2
 
 [node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart3"]
-position = Vector2(568, 104)
+position = Vector2(680, 112)
 scale = Vector2(0.183908, 0.230496)
 texture = ExtResource("3_rfplf")
+
+[node name="heart4" type="TextureRect" parent="health_bar/HBoxContainer"]
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart4"]
+position = Vector2(732, 112)
+scale = Vector2(0.183908, 0.230496)
+texture = ExtResource("3_rfplf")
+
+[node name="heart5" type="TextureRect" parent="health_bar/HBoxContainer"]
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart5"]
+position = Vector2(784, 112)
+scale = Vector2(0.183908, 0.230496)
+texture = ExtResource("3_rfplf")
+
+[node name="heart6" type="TextureRect" parent="health_bar/HBoxContainer"]
+layout_mode = 2
+
+[node name="heart" type="Sprite2D" parent="health_bar/HBoxContainer/heart6"]
+position = Vector2(836, 112)
+scale = Vector2(0.183908, 0.230496)
+texture = ExtResource("3_rfplf")
+
+[node name="reinicio" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="area_entered" from="player_hurtBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Arma/cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="timeout" from="PowerUp_Duration" to="." method="_on_power_up_duration_timeout"]
+[connection signal="timeout" from="reinicio" to="." method="_on_reinicio_timeout"]

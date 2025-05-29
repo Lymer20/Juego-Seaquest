@@ -6,6 +6,8 @@ const friccion: float = 1600
 var salvados: int = 0
 var jugador_muerto: bool
 var waves: int = 0
+var health: int = 3
+var check_life = 0
 
 func pausa():
 	get_node("/root/Mundo/Canvas/Pausa").pausa()

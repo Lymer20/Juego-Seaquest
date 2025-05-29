@@ -8,6 +8,7 @@ var jugador_path=preload("res://entities/player/jugador.tscn")
 var jugador = jugador_path.instantiate()
 @onready var tiempo_reinicio: Timer = $Tiempo_Reinicio
 
+
 func _ready():
 	tiempo_reinicio.process_mode = Timer.PROCESS_MODE_ALWAYS
 
@@ -37,6 +38,10 @@ func _on_body_entered(body: Node) -> void:
 			# Valor que recibe de los salvados
 			for i in range(Global_Player.salvados):
 				Global_Scoreboard.score += score_ganado
+				
+				var jugador = get_node("/root/Mundo/Jugador")  # Asegura que la ruta es correcta
+				if jugador:
+					jugador.extra_life()
 
 			# Aumenta el wave y reinicia el oxigeno y los salvados
 			Global_Player.waves += 1
