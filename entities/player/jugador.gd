@@ -15,7 +15,6 @@ const aceleracion: float = Global_Player.aceleracion
 const friccion: float = Global_Player.friccion
 
 # Personas a salvar
-
 var salvados: int = 0
 
 # Disparo
@@ -29,30 +28,49 @@ var shoot: bool = true
 
 var heart_list: Array [TextureRect]
 var max_hearts = 6
-var health = 3
+
+@onready var reinicio: Timer = $reinicio
 
 
 func _ready() -> void:	
+	reinicio.process_mode = Timer.PROCESS_MODE_ALWAYS
+	
 	var hearts_parent = $health_bar/HBoxContainer
 	var children = hearts_parent.get_children()
-	for i in range(health):
+	heart_list.clear()
+	
+	for i in range(children.size()):
 		heart_list.append(children[i])
+	
+	update_heart_display()
 
 func update_heart_display():
 	for i in range(heart_list.size()):
-		heart_list[i].visible = i < max(health, 0)
+		heart_list[i].visible = i < Global_Player.health
 
+#vidas extras
+func extra_life():
+	var puntos_necesarios = Global_Scoreboard.score - Global_Player.check_life
+	if puntos_necesarios >= 1000 and Global_Player.health < max_hearts:
+		Global_Player.health += 1 
+		Global_Scoreboard.score -= 1000
+		Global_Player.check_life += 1000  
+		update_heart_display()
+		print("¡Has ganado una vida extra!")
+		
 func take_damage():
-	if health > 0:
-		health -= 1
+	if Global_Player.health > 0:
+		Global_Player.health -= 1
 		update_heart_display()
 		
-		if health <= 0:
+		if Global_Player.health <= 0:
 			Global_Player.jugador_muerto = true
 			Global_Player.gameover()
 		else:
-			print("Perdiste una vida, vida restante:" + str(health))
-			respawn()
+			print("Perdiste una vida, vida restante:" + str(Global_Player.health))
+			
+			get_tree().paused = true
+			reinicio.start()
 
 
 func _physics_process(delta: float) -> void:
@@ -111,7 +129,7 @@ func _on_cooldown_timeout() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" or area.name == "enemy_gun_hitBox":
 		if invincibility == false:
-			if health > 0:
+			if Global_Player.health > 0:
 				take_damage()
 			else:
 				Global_Player.jugador_muerto = true
@@ -158,3 +176,18 @@ func animations_update(movimiento_x):
 		sprite_2d.modulate = Color(50, 50, 50)
 	else:
 		sprite_2d.modulate = Color(1, 1,  1)
+
+
+func _on_reinicio_timeout() -> void:
+
+	get_tree().paused = false
+	respawn()
+	
+	var puntaje_actual = Global_Scoreboard.score
+	var vidas_actuales = Global_Player.health
+	
+	Global_Player.salvados = 0
+	
+	get_tree().reload_current_scene()
+	Global_Scoreboard.score = puntaje_actual
+	Global_Player.health = vidas_actuales

@@ -7,22 +7,20 @@ const MAX_RESCUED = 6
 
 var velocidad_inicial = 75
 var velocidad = velocidad_inicial + (velocidad_inicial * Global_Player.waves)/15
-var direccion = 1  
+var direccion = 1 
 
-func _ready():
-	for i in range(MAX_RESCUED):
-		humanos_container.get_child(i).visible = false
-		update_rescued()
+func _ready() -> void:
+	humanos_container.visible = false 
 
 func update_rescued():
 	for i in range(MAX_RESCUED):
 		var humanos = humanos_container.get_child(i)
 		humanos.visible = i < Global_Player.salvados
 
+
 func _process(delta):
-	for i in range(MAX_RESCUED):
-		humanos_container.get_child(i).visible = false
-		update_rescued()
+	humanos_container.visible = Global_Player.salvados > 0
+	update_rescued()
 	position.x += velocidad * direccion * delta
 	vuelta_huida()
 
