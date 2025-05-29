@@ -15,7 +15,14 @@ func _ready():
 func _process(delta: float) -> void:
 	var progress_bar = get_node("barra de oxigeno/ProgressBar")
 	progress_bar.value = cantidad_oxigeno
-	cantidad_oxigeno = max(cantidad_oxigeno - velocidad_disminucion * delta, 0)
+	
+	if not dentro_del_area:
+		cantidad_oxigeno = max(cantidad_oxigeno - velocidad_disminucion * delta, 0)
+	else:
+		cantidad_oxigeno = min(cantidad_oxigeno + (velocidad_disminucion * 2 * delta), 1000)
+		
+		if cantidad_oxigeno >= 1000:
+			cantidad_oxigeno = 1000
 
 func _on_body_entered(body: Node) -> void:
 	if body.name == "Jugador":
@@ -23,8 +30,8 @@ func _on_body_entered(body: Node) -> void:
 		# Punto medio, donde no logró salvar a todos
 		if Global_Player.salvados > 0 && Global_Player.salvados < 6:
 			Global_Player.salvados -= 1
-			cantidad_oxigeno = 1000
-			
+			#cantidad_oxigeno = 1000
+			dentro_del_area = true
 		# Punto de siguiente oleada, donde logró salvar a todos
 		elif Global_Player.salvados >= 6:
 			
@@ -39,7 +46,7 @@ func _on_body_entered(body: Node) -> void:
 			for i in range(Global_Player.salvados):
 				Global_Scoreboard.score += score_ganado
 				
-				var jugador = get_node("/root/Mundo/Jugador")  # Asegura que la ruta es correcta
+				var jugador = get_node("/root/Mundo/Jugador") 
 				if jugador:
 					jugador.extra_life()
 
@@ -53,9 +60,19 @@ func _on_body_entered(body: Node) -> void:
 			
 			# Sube a la superficie sin salvar a nadie
 		else:
-			Global_Player.jugador_muerto = true
-			Global_Player.gameover()
+			var jugador = get_node("/root/Mundo/Jugador")
+			if jugador:
+				jugador.take_damage()
 			
+			if Global_Player.health <= 0:
+				Global_Player.jugador_muerto = true
+				Global_Player.gameover()
+			
+func _on_body_exited(body: Node) -> void:
+	if body.name == "Jugador":
+		#if cantidad_oxigeno < 1000:
+			dentro_del_area = false
+		
 func _on_tiempo_reinicio_timeout() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()

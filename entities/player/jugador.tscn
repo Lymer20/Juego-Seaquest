@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d3ha2e0rbrexn" path="res://entities/player/jugador.gd" id="1_16k11"]
 [ext_resource type="Texture2D" uid="uid://dkj3vmrhk00uc" path="res://sprites/spritesJugador-Sheet.png" id="2_q8yiv"]
 [ext_resource type="Texture2D" uid="uid://b47x0dl2lf58f" path="res://sprites/Heart.png" id="3_rfplf"]
-[ext_resource type="Script" path="res://entities/player/arma.gd" id="3_yipnj"]
+[ext_resource type="Script" uid="uid://cijipgnd2yu4q" path="res://entities/player/arma.gd" id="3_yipnj"]
 [ext_resource type="Texture2D" uid="uid://bv8mxlxvbxptc" path="res://sprites/spriteShoot-Sheet.png" id="4_1rsaf"]
 [ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="4_ml0ux"]
 [ext_resource type="AudioStream" uid="uid://cr10t7m2qnam6" path="res://audio/sfx_powerup_deltarune.wav" id="5_yipnj"]

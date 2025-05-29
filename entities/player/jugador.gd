@@ -90,6 +90,7 @@ func update_rescued():
 func _physics_process(delta: float) -> void:
 	humanos_container.visible = Global_Player.salvados > 0
 	update_rescued()
+	
 	# MOVIMIENTO
 	# Estas variables detectan movimiento en X y en Y
 	var movimiento_x := Input.get_axis("izquierda", "derecha")
