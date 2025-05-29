@@ -46,60 +46,6 @@ process_callback = 0
 wait_time = 5.0
 autostart = true
 
-[node name="humans_bar" type="CanvasLayer" parent="."]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="humans_bar"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="humans_bar/HBoxContainer"]
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect"]
-position = Vector2(520, 632)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("2_gtord")
-
-[node name="TextureRect2" type="TextureRect" parent="humans_bar/HBoxContainer"]
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect2"]
-position = Vector2(556, 632)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("2_gtord")
-
-[node name="TextureRect3" type="TextureRect" parent="humans_bar/HBoxContainer"]
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect3"]
-position = Vector2(592, 632)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("2_gtord")
-
-[node name="TextureRect4" type="TextureRect" parent="humans_bar/HBoxContainer"]
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect4"]
-position = Vector2(628, 632)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("2_gtord")
-
-[node name="TextureRect5" type="TextureRect" parent="humans_bar/HBoxContainer"]
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect5"]
-position = Vector2(664, 632)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("2_gtord")
-
-[node name="TextureRect6" type="TextureRect" parent="humans_bar/HBoxContainer"]
-layout_mode = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect6"]
-position = Vector2(700, 632)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("2_gtord")
-
 [connection signal="screen_exited" from="Sale_de_vista" to="." method="_on_sale_de_vista_screen_exited"]
 [connection signal="area_entered" from="human_areaBox" to="." method="_on_enemy_detect_area_entered"]
 [connection signal="area_exited" from="human_areaBox" to="." method="_on_enemy_detect_area_exited"]

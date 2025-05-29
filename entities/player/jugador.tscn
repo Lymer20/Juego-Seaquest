@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpcjdcnmlpdpb"]
+[gd_scene load_steps=7 format=3 uid="uid://cpcjdcnmlpdpb"]
 
 [ext_resource type="Script" uid="uid://d3ha2e0rbrexn" path="res://entities/player/jugador.gd" id="1_16k11"]
 [ext_resource type="Texture2D" uid="uid://bgo61e66h1c1t" path="res://submarino-jugador.png" id="2_f7wae"]
 [ext_resource type="Texture2D" uid="uid://b47x0dl2lf58f" path="res://Heart.png" id="3_rfplf"]
+[ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="4_ml0ux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8o684"]
 size = Vector2(128, 128)
@@ -96,6 +97,60 @@ texture = ExtResource("3_rfplf")
 [node name="reinicio" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="humans_bar" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="humans_bar"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="humans_bar/HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect"]
+position = Vector2(520, 632)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("4_ml0ux")
+
+[node name="TextureRect2" type="TextureRect" parent="humans_bar/HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect2"]
+position = Vector2(556, 632)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("4_ml0ux")
+
+[node name="TextureRect3" type="TextureRect" parent="humans_bar/HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect3"]
+position = Vector2(592, 632)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("4_ml0ux")
+
+[node name="TextureRect4" type="TextureRect" parent="humans_bar/HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect4"]
+position = Vector2(628, 632)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("4_ml0ux")
+
+[node name="TextureRect5" type="TextureRect" parent="humans_bar/HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect5"]
+position = Vector2(664, 632)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("4_ml0ux")
+
+[node name="TextureRect6" type="TextureRect" parent="humans_bar/HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect6"]
+position = Vector2(700, 632)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("4_ml0ux")
 
 [connection signal="area_entered" from="player_hurtBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Arma/cooldown" to="." method="_on_cooldown_timeout"]

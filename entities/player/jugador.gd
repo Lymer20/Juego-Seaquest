@@ -1,13 +1,15 @@
 extends CharacterBody2D
-
 @onready var sprite_2d: Sprite2D = $Sprite2D
-
 @onready var power_up_duration: Timer = $/root/Mundo/Jugador/PowerUp_Duration
-var invincibility: bool = false
-var shooter_cooldown = 0.0
-
 @export var dentro_del_area = false
 @onready var barra_oxigeno: ProgressBar = $"../Oxigeno/barra de oxigeno/ProgressBar"
+@onready var arma: Node2D = $Arma
+@onready var cooldown: Timer = $Arma/cooldown
+@onready var reinicio: Timer = $reinicio
+@onready var humanos_container = $humans_bar/HBoxContainer
+
+var invincibility: bool = false
+var shooter_cooldown = 0.0
 
 # Movimiento
 const velocidad_max: float = Global_Player.velocidad_max
@@ -18,22 +20,21 @@ const friccion: float = Global_Player.friccion
 var salvados: int = 0
 
 # Disparo
-@onready var arma: Node2D = $Arma
 var bala_path=preload("res://entities/player/bala.tscn")
 var direccion_disparo = 1
 
 # Cooldown del disparo
 var shoot: bool = true
-@onready var cooldown: Timer = $Arma/cooldown
 
+#vidas
 var heart_list: Array [TextureRect]
 var max_hearts = 6
 
-@onready var reinicio: Timer = $reinicio
-
+const MAX_RESCUED = 6
 
 func _ready() -> void:	
 	reinicio.process_mode = Timer.PROCESS_MODE_ALWAYS
+	humanos_container.visible = false 
 	
 	var hearts_parent = $health_bar/HBoxContainer
 	var children = hearts_parent.get_children()
@@ -71,9 +72,17 @@ func take_damage():
 			
 			get_tree().paused = true
 			reinicio.start()
+#humanos
+func update_rescued():
+	for i in range(MAX_RESCUED):
+		var humanos = humanos_container.get_child(i)
+		humanos.visible = i < Global_Player.salvados
+		
 
 
 func _physics_process(delta: float) -> void:
+	humanos_container.visible = Global_Player.salvados > 0
+	update_rescued()
 	# MOVIMIENTO
 	# Estas variables detectan movimiento en X y en Y
 	var movimiento_x := Input.get_axis("izquierda", "derecha")
