@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	if not dentro_del_area:
 		cantidad_oxigeno = max(cantidad_oxigeno - velocidad_disminucion * delta, 0)
 	else:
-		cantidad_oxigeno = min(cantidad_oxigeno + (velocidad_disminucion * 2 * delta), 1000)
+		cantidad_oxigeno = min(cantidad_oxigeno + (velocidad_disminucion * 5 * delta), 1000)
 		
 		if cantidad_oxigeno >= 1000:
 			cantidad_oxigeno = 1000

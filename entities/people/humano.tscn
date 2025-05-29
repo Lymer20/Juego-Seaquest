@@ -1,23 +1,94 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgbshdl4mmsje"]
+[gd_scene load_steps=14 format=3 uid="uid://bgbshdl4mmsje"]
 
 [ext_resource type="Script" uid="uid://b2y1vr0x1s00n" path="res://entities/people/humano.gd" id="1_sphdd"]
-[ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="2_gtord"]
+[ext_resource type="Texture2D" uid="uid://b75kkm6op4m6t" path="res://sprites/spriteBuzo_Humano.png" id="2_qqlud"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oigs0"]
+atlas = ExtResource("2_qqlud")
+region = Rect2(0, 0, 156, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jfn5"]
+atlas = ExtResource("2_qqlud")
+region = Rect2(156, 0, 156, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1ejr"]
+atlas = ExtResource("2_qqlud")
+region = Rect2(312, 0, 156, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjly1"]
+atlas = ExtResource("2_qqlud")
+region = Rect2(468, 0, 156, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0h6j"]
+atlas = ExtResource("2_qqlud")
+region = Rect2(624, 0, 156, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd2mq"]
+atlas = ExtResource("2_qqlud")
+region = Rect2(780, 0, 156, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltdvg"]
+atlas = ExtResource("2_qqlud")
+region = Rect2(936, 0, 156, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb8ms"]
+atlas = ExtResource("2_qqlud")
+region = Rect2(1092, 0, 156, 130)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qg5kf"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_oigs0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jfn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1ejr")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_hjly1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0h6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd2mq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltdvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb8ms")
+}],
+"loop": true,
+"name": &"flee",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqlud"]
 size = Vector2(32, 32)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sphdd"]
-radius = 34.8281
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nm5s1"]
+size = Vector2(98.4615, 70.7692)
 
 [node name="humano" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 128
 script = ExtResource("1_sphdd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.19209e-07, 4.76837e-07)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_gtord")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.885171, -0.520255)
+scale = Vector2(-0.476323, 0.456747)
+sprite_frames = SubResource("SpriteFrames_qg5kf")
+animation = &"flee"
+frame_progress = 0.0810681
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qqlud")
@@ -32,8 +103,9 @@ collision_layer = 16
 collision_mask = 138
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="human_areaBox"]
-scale = Vector2(0.7, 0.7)
-shape = SubResource("CircleShape2D_sphdd")
+position = Vector2(9.53674e-07, -1)
+scale = Vector2(0.65, 0.65)
+shape = SubResource("RectangleShape2D_nm5s1")
 
 [node name="Vuelta_Huida" type="RayCast2D" parent="."]
 position = Vector2(-24, 0)

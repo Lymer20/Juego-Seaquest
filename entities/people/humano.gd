@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var vuelta_automatica: Timer = $Vuelta_Automatica
 @onready var raycast_huida: RayCast2D = $Vuelta_Huida
 @onready var jugador = get_node("/root/Mundo/Jugador")
@@ -10,6 +10,7 @@ var direccion = 1
 var max_rescued = 6
 
 func _ready() -> void:
+	animated_sprite_2d.play("default")
 	if jugador:
 		max_rescued = jugador.MAX_RESCUED
 
@@ -23,6 +24,7 @@ func _on_sale_de_vista_screen_exited() -> void:
 
 func _on_enemy_detect_area_entered(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" || area.name == "enemy_gun_hitBox":
+		animated_sprite_2d.play("flee")
 		velocidad = velocidad * 2
 	
 	if area.name == "player_hurtBox":
@@ -37,6 +39,7 @@ func _on_enemy_detect_area_entered(area: Area2D) -> void:
 
 func _on_enemy_detect_area_exited(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" || area.name == "enemy_gun_hitBox":
+		animated_sprite_2d.play("default")
 		velocidad = velocidad / 2
 
 func _on_vuelta_automatica_timeout() -> void:

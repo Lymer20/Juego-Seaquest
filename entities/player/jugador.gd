@@ -9,6 +9,7 @@ var shooter_cooldown = 0.0
 @onready var sfx_normalwave: AudioStreamPlayer = $"../sfx_normalwave"
 @onready var sfx_hardwave: AudioStreamPlayer = $"../sfx_hardwave"
 @onready var sfx_funnydeath: AudioStreamPlayer2D = $sfx_funnydeath
+@onready var sfx_save: AudioStreamPlayer2D = $sfx_save
 @onready var player_hurtBox: CollisionShape2D = $player_hurtBox/CollisionShape2D
 
 @export var dentro_del_area = false
@@ -181,6 +182,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		invincibility = true
 		power_up_duration.wait_time = 10
 		power_up_duration.start()
+	
+	if area.name == "human_areaBox" and Global_Player.salvados < 6:
+		sfx_save.play()
 
 func death_oxygen():
 	if barra_oxigeno.value == 0.0:

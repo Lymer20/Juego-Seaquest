@@ -1,16 +1,17 @@
-[gd_scene load_steps=56 format=3 uid="uid://b3ty4j5ndkkto"]
+[gd_scene load_steps=57 format=3 uid="uid://b3ty4j5ndkkto"]
 
 [ext_resource type="Script" uid="uid://d3ha2e0rbrexn" path="res://entities/player/jugador.gd" id="1_16k11"]
 [ext_resource type="Texture2D" uid="uid://bpvnh7b65jdlb" path="res://sprites/spritesFunnyDeath.png" id="2_km7nx"]
 [ext_resource type="Texture2D" uid="uid://dkj3vmrhk00uc" path="res://sprites/spritesJugador-Sheet.png" id="2_q8yiv"]
 [ext_resource type="Texture2D" uid="uid://b47x0dl2lf58f" path="res://sprites/Heart.png" id="3_rfplf"]
-[ext_resource type="Script" uid="uid://cijipgnd2yu4q" path="res://entities/player/arma.gd" id="3_yipnj"]
+[ext_resource type="Script" path="res://entities/player/arma.gd" id="3_yipnj"]
 [ext_resource type="Texture2D" uid="uid://bv8mxlxvbxptc" path="res://sprites/spriteShoot-Sheet.png" id="4_1rsaf"]
-[ext_resource type="Texture2D" uid="uid://dw6i1dfjqy8nk" path="res://icon.svg" id="4_ml0ux"]
 [ext_resource type="AudioStream" uid="uid://cr10t7m2qnam6" path="res://audio/sfx_powerup_deltarune.wav" id="5_yipnj"]
 [ext_resource type="AudioStream" uid="uid://bqsxbgu382jou" path="res://audio/sfx_rapidfire.mp3" id="6_1rsaf"]
 [ext_resource type="AudioStream" uid="uid://jsk2ikrofrjh" path="res://audio/sfx_playerbullet.mp3" id="7_km7nx"]
+[ext_resource type="Texture2D" uid="uid://2sjj6xrhewud" path="res://sprites/spriteBuzo_Show.png" id="7_u73j6"]
 [ext_resource type="AudioStream" uid="uid://b6kdeyvjge5m3" path="res://audio/sfx_death.wav" id="11_u73j6"]
+[ext_resource type="AudioStream" uid="uid://dtx2bf6dhkjyj" path="res://audio/sfx_gethuman.wav" id="12_6ucqf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpgak"]
 atlas = ExtResource("2_km7nx")
@@ -436,49 +437,43 @@ offset_bottom = 40.0
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect"]
-position = Vector2(520, 632)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("4_ml0ux")
+position = Vector2(526, 632)
+texture = ExtResource("7_u73j6")
 
 [node name="TextureRect2" type="TextureRect" parent="humans_bar/HBoxContainer"]
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect2"]
-position = Vector2(556, 632)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("4_ml0ux")
+position = Vector2(566, 632)
+texture = ExtResource("7_u73j6")
 
 [node name="TextureRect3" type="TextureRect" parent="humans_bar/HBoxContainer"]
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect3"]
-position = Vector2(592, 632)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("4_ml0ux")
+position = Vector2(606, 632)
+texture = ExtResource("7_u73j6")
 
 [node name="TextureRect4" type="TextureRect" parent="humans_bar/HBoxContainer"]
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect4"]
-position = Vector2(628, 632)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("4_ml0ux")
+position = Vector2(646, 632)
+texture = ExtResource("7_u73j6")
 
 [node name="TextureRect5" type="TextureRect" parent="humans_bar/HBoxContainer"]
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect5"]
-position = Vector2(664, 632)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("4_ml0ux")
+position = Vector2(686, 632)
+texture = ExtResource("7_u73j6")
 
 [node name="TextureRect6" type="TextureRect" parent="humans_bar/HBoxContainer"]
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="humans_bar/HBoxContainer/TextureRect6"]
-position = Vector2(700, 632)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("4_ml0ux")
+position = Vector2(726, 632)
+texture = ExtResource("7_u73j6")
 
 [node name="sfx_powerup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_yipnj")
@@ -494,6 +489,10 @@ volume_db = -5.0
 [node name="sfx_funnydeath" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("11_u73j6")
+
+[node name="sfx_save" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_6ucqf")
+volume_db = -5.0
 
 [connection signal="area_entered" from="player_hurtBox" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Arma/cooldown" to="." method="_on_cooldown_timeout"]
