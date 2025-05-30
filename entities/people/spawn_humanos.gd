@@ -12,13 +12,30 @@ var posiciones_spawn = [
 	Vector2(-32.0, 454)
 ]
 
+var max_humanos = 5
+var humanos_pantalla = 0
+
 func _ready():
 	spawn_oleada()
 
 ## Recomendación: Cambiar este metodo de hacer oleadas con
 ## oleadas ya predeterminadas. Aprender y hacerlo primero con la de los enemigos
 func spawn_oleada():
-	var cantidad_humanos = randi_range(1, 4) 
+	if humanos_pantalla >= max_humanos:
+		return
+	
+	var probabilidad = randi() % 100
+	var cantidad_humanos = 1
+	
+	if probabilidad < 60:
+		cantidad_humanos = 2
+	elif probabilidad < 85:
+		cantidad_humanos = 3
+	else:
+		cantidad_humanos = 4
+		
+	cantidad_humanos = min(cantidad_humanos, max_humanos - humanos_pantalla)
+	
 	var pos_y = randf_range(215, 434)
 	var humano_direction = randi_range(0, 1)
 	
@@ -37,6 +54,8 @@ func spawn_oleada():
 		#humano_instance.scale.x = -1 if humano_direction == 0 else 1
 		
 		add_child(humano_instance)
+		humanos_pantalla += 1
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	humanos_pantalla = max(0, humanos_pantalla - 1)
 	queue_free()

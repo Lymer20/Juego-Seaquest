@@ -42,6 +42,8 @@ var max_hearts = 6
 
 const MAX_RESCUED = 6
 
+var ultimo_puntaje = 0
+
 func _ready() -> void:	
 	reinicio.process_mode = Timer.PROCESS_MODE_ALWAYS
 	humanos_container.visible = false 
@@ -61,11 +63,11 @@ func update_heart_display():
 
 #vidas extras
 func extra_life():
-	var puntos_necesarios = Global_Scoreboard.score - Global_Player.check_life
-	if puntos_necesarios >= 1000 and Global_Player.health < max_hearts:
-		Global_Player.health += 1 
-		Global_Scoreboard.score -= 1000
-		Global_Player.check_life += 1000  
+	var vidas_ganadas = floor(Global_Scoreboard.score / 5000)
+
+	if vidas_ganadas > Global_Player.check_life and Global_Player.health < max_hearts:
+		Global_Player.health = min(Global_Player.health + 1, max_hearts)
+		Global_Player.check_life = vidas_ganadas  
 		update_heart_display()
 		print("¡Has ganado una vida extra!")
 		
@@ -90,6 +92,10 @@ func update_rescued():
 func _physics_process(delta: float) -> void:
 	humanos_container.visible = Global_Player.salvados > 0
 	update_rescued()
+	
+	if Global_Scoreboard.score > ultimo_puntaje:
+		extra_life()
+		ultimo_puntaje = Global_Scoreboard.score
 	
 	# MOVIMIENTO
 	# Estas variables detectan movimiento en X y en Y

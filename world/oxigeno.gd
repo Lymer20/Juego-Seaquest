@@ -20,10 +20,20 @@ func _process(delta: float) -> void:
 	if not dentro_del_area:
 		cantidad_oxigeno = max(cantidad_oxigeno - velocidad_disminucion * delta, 0)
 	else:
-		cantidad_oxigeno = min(cantidad_oxigeno + (velocidad_disminucion * 5 * delta), 1000)
+		cantidad_oxigeno = min(cantidad_oxigeno + (velocidad_disminucion * 2 * delta), 1000)
 		
 		if cantidad_oxigeno >= 1000:
 			cantidad_oxigeno = 1000
+			
+	if cantidad_oxigeno <= 0:
+		var jugador = get_node("/root/Mundo/Jugador")
+		if jugador:
+			if Global_Player.health > 1:
+				jugador.take_damage()
+				cantidad_oxigeno = 1000
+			else:
+				Global_Player.jugador_muerto = true
+				Global_Player.gameover()
 
 func _on_body_entered(body: Node) -> void:
 	if body.name == "Jugador":
