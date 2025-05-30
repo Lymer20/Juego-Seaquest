@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ptund6jpsjva"]
+
+[ext_resource type="FontFile" uid="uid://nxff6b8n0yo2" path="res://font/MightySouly-lxggD.ttf" id="1_lpt5g"]
+
+[resource]
+default_font = ExtResource("1_lpt5g")

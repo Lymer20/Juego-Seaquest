@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://by0p63th36fcp"]
 
-[ext_resource type="Script" uid="uid://655mn07lwo1" path="res://entities/enemies/submarine/bala_enemiga.gd" id="1_77asy"]
+[ext_resource type="Script" uid="uid://655mn07lwo1" path="res://entities/enemies/submarine/enemy_bullet.gd" id="1_77asy"]
 [ext_resource type="Texture2D" uid="uid://jscrywvgbidy" path="res://sprites/spritesSubmarinoEnemigo_Disparo-Sheet.png" id="2_k7gro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fbofy"]

@@ -13,7 +13,6 @@ func _ready():
 ## Recomendación: Cambiar este metodo de hacer oleadas con
 ## oleadas ya predeterminadas. Aprender y hacerlo primero con la de los enemigos
 func spawn_oleada():
-	var pos_x
 	var pos_y = randf_range(200, 544)
 	var wave_direction = (randi() % 2)
 	

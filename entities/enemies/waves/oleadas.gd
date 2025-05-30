@@ -4,8 +4,8 @@ var velocidad = 150
 var direccion = 1  
 
 var enemigos = [
-	preload("res://entities/enemies/shark/hurt_test.tscn"),
-	preload("res://entities/enemies/submarine/submarino_test.tscn")
+	preload("res://entities/enemies/shark/shark.tscn"),
+	preload("res://entities/enemies/submarine/enemy_submarine.tscn")
 ]
 
 var posiciones_spawn: Array
@@ -126,7 +126,10 @@ func spawn_enemigos():
 	
 	for i in range(cantidad_enemigos):
 		var enemigo_instance = enemigo_seleccionado.instantiate()
-		enemigo_instance.position = posiciones_spawn[i]
+		if direccion == -1:
+			enemigo_instance.position = posiciones_spawn[i]
+		else:
+			enemigo_instance.position = Vector2(posiciones_spawn[i].x * -1, posiciones_spawn[i].y)
 		add_child(enemigo_instance)
 
 func _process(delta):

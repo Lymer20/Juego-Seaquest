@@ -1,25 +1,47 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvxcakdbbuy1p"]
+[gd_scene load_steps=14 format=3 uid="uid://bvxcakdbbuy1p"]
 
-[ext_resource type="Script" uid="uid://c11niutqdn1jk" path="res://entities/player/game over/game_over.gd" id="1_y26ei"]
+[ext_resource type="Script" path="res://entities/player/game over/game_over.gd" id="1_y26ei"]
+[ext_resource type="Theme" uid="uid://8rslk0xauflv" path="res://sprites/buttonTexture/Default_Button.tres" id="2_d53w1"]
 [ext_resource type="Script" uid="uid://diq27e0peg062" path="res://world/scores/highscore.gd" id="2_yxx3c"]
+[ext_resource type="Theme" uid="uid://ptund6jpsjva" path="res://sprites/buttonTexture/Default_Font.tres" id="3_6ghep"]
 [ext_resource type="Script" uid="uid://dbq10vhocbru3" path="res://world/scores/score.gd" id="3_j7dmf"]
+[ext_resource type="FontFile" uid="uid://nxff6b8n0yo2" path="res://font/MightySouly-lxggD.ttf" id="4_8suh8"]
 [ext_resource type="AudioStream" uid="uid://b84g60s1dgof8" path="res://audio/sfx_gameover_sonic.wav" id="4_yu6il"]
 [ext_resource type="AudioStream" uid="uid://dymmpo6qhni4q" path="res://audio/sfx_selection.mp3" id="5_ingkc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yxx3c"]
 font_size = 80
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 3)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ccer4"]
-font_size = 20
+font = ExtResource("4_8suh8")
+font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8u835"]
-font_size = 20
+font = ExtResource("4_8suh8")
+font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yu6il"]
-font_size = 20
+font = ExtResource("4_8suh8")
+font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ingkc"]
-font_size = 20
+font = ExtResource("4_8suh8")
+font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 2)
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -36,7 +58,7 @@ offset_left = -8.0
 offset_top = -2.0
 offset_right = 1288.0
 offset_bottom = 726.0
-color = Color(0, 0, 0, 0.14902)
+color = Color(0.239216, 0.262745, 0.329412, 0.682353)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -44,24 +66,44 @@ offset_left = 274.0
 offset_top = 234.0
 offset_right = 958.0
 offset_bottom = 489.0
-color = Color(0, 0, 0, 0.14902)
+color = Color(0, 0, 0, 0.247059)
+
+[node name="ColorRect3" type="ColorRect" parent="ColorRect"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 694.0
+offset_bottom = 262.0
+theme = ExtResource("2_d53w1")
+color = Color(0.225713, 0.61581, 0.586109, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="ColorRect"]
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 686.0
+offset_bottom = 254.0
+theme = ExtResource("2_d53w1")
+color = Color(0.338472, 0.79548, 0.683825, 1)
 
 [node name="Boton_Menu" type="Button" parent="."]
 process_mode = 3
 layout_mode = 0
-offset_left = 676.0
-offset_top = 379.0
-offset_right = 879.0
-offset_bottom = 459.0
+offset_left = 692.0
+offset_top = 376.0
+offset_right = 908.0
+offset_bottom = 456.0
+theme = ExtResource("2_d53w1")
+theme_override_font_sizes/font_size = 30
 text = "Menu Principal"
 
 [node name="Boton_Reiniciar" type="Button" parent="."]
 process_mode = 3
 layout_mode = 2
-offset_left = 344.0
-offset_top = 374.0
-offset_right = 547.0
-offset_bottom = 454.0
+offset_left = 304.0
+offset_top = 368.0
+offset_right = 531.0
+offset_bottom = 448.0
+theme = ExtResource("2_d53w1")
+theme_override_font_sizes/font_size = 30
 text = "Reiniciar"
 
 [node name="Te moriste" type="Label" parent="."]
@@ -70,24 +112,27 @@ offset_left = 266.0
 offset_top = 112.0
 offset_right = 959.0
 offset_bottom = 222.0
-text = "T MORISTE CAUSA"
+theme = ExtResource("3_6ghep")
+text = "HAS MUERTO"
 label_settings = SubResource("LabelSettings_yxx3c")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Puntaje mas alto" type="Label" parent="."]
 layout_mode = 0
-offset_left = 296.0
-offset_top = 250.0
-offset_right = 632.0
-offset_bottom = 278.0
+offset_left = 672.0
+offset_top = 256.0
+offset_right = 1008.0
+offset_bottom = 294.0
 text = "Puntaje mas alto:"
 label_settings = SubResource("LabelSettings_ccer4")
 
 [node name="Highscore" type="Label" parent="."]
 layout_mode = 0
-offset_left = 464.0
-offset_top = 248.0
-offset_right = 600.0
-offset_bottom = 280.0
+offset_left = 730.0
+offset_top = 304.0
+offset_right = 866.0
+offset_bottom = 342.0
 text = "0"
 label_settings = SubResource("LabelSettings_8u835")
 horizontal_alignment = 1
@@ -95,19 +140,19 @@ script = ExtResource("2_yxx3c")
 
 [node name="Puntaje actual" type="Label" parent="."]
 layout_mode = 0
-offset_left = 304.0
-offset_top = 296.0
-offset_right = 449.0
-offset_bottom = 324.0
+offset_left = 320.0
+offset_top = 256.0
+offset_right = 515.0
+offset_bottom = 294.0
 text = "Puntaje actual:"
 label_settings = SubResource("LabelSettings_yu6il")
 
 [node name="Score" type="Label" parent="."]
 layout_mode = 0
-offset_left = 464.0
-offset_top = 296.0
-offset_right = 600.0
-offset_bottom = 328.0
+offset_left = 352.0
+offset_top = 304.0
+offset_right = 488.0
+offset_bottom = 342.0
 text = "0"
 label_settings = SubResource("LabelSettings_ingkc")
 horizontal_alignment = 1

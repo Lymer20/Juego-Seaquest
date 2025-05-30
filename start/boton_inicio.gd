@@ -6,3 +6,6 @@ func _pressed():
 
 func _on_mouse_entered() -> void:
 	sfx_selection.play()
+
+func _on_salir_pressed() -> void:
+	get_tree().quit()

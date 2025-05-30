@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bs80h6pf4qjk"]
+[gd_scene load_steps=23 format=3 uid="uid://bs80h6pf4qjk"]
 
 [ext_resource type="Script" uid="uid://qgt7qrtq22rj" path="res://world/mundo.gd" id="1_6ba58"]
 [ext_resource type="Texture2D" uid="uid://cqkinqjq17v10" path="res://sprites/spritesBackgroundGame-Sheet.png" id="2_h0l4y"]
@@ -6,8 +6,10 @@
 [ext_resource type="Script" uid="uid://css13cfq0ba67" path="res://world/oxigeno.gd" id="3_ltsvv"]
 [ext_resource type="Script" uid="uid://dbq10vhocbru3" path="res://world/scores/score.gd" id="4_re12h"]
 [ext_resource type="Script" uid="uid://diq27e0peg062" path="res://world/scores/highscore.gd" id="4_t86mu"]
+[ext_resource type="FontFile" uid="uid://nxff6b8n0yo2" path="res://font/MightySouly-lxggD.ttf" id="5_i021i"]
 [ext_resource type="PackedScene" uid="uid://bvxcakdbbuy1p" path="res://entities/player/game over/game_over.tscn" id="6_m33u3"]
 [ext_resource type="Script" uid="uid://fh05msusyxja" path="res://world/wave/waves.gd" id="6_nxwut"]
+[ext_resource type="Theme" uid="uid://ptund6jpsjva" path="res://sprites/buttonTexture/Default_Font.tres" id="7_dm2gk"]
 [ext_resource type="PackedScene" uid="uid://dl23nw35yydom" path="res://world/pausa.tscn" id="8_e4rmm"]
 [ext_resource type="AudioStream" uid="uid://c3ve1vj1pi0fo" path="res://audio/sfx_hardwave_deltarune.wav" id="10_6tgyw"]
 [ext_resource type="AudioStream" uid="uid://j8y6lb2qxu6t" path="res://audio/sfx_normalwave_tunic.wav" id="11_6tgyw"]
@@ -50,9 +52,15 @@ bg_color = Color(0.331893, 0.698049, 0.273888, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ltsvv"]
 font_size = 50
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 3)
 
 [sub_resource type="LabelSettings" id="LabelSettings_nxwut"]
 font_size = 30
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 3)
 
 [node name="Mundo" type="Node2D"]
 script = ExtResource("1_6ba58")
@@ -100,13 +108,16 @@ debug_color = Color(0.662919, 0.513129, 0, 0.42)
 [node name="barra de oxigeno" type="CanvasLayer" parent="Oxigeno"]
 
 [node name="ProgressBar" type="ProgressBar" parent="Oxigeno/barra de oxigeno"]
-offset_left = 512.0
-offset_top = 664.0
-offset_right = 768.0
-offset_bottom = 691.0
+offset_left = 320.0
+offset_top = 672.0
+offset_right = 960.0
+offset_bottom = 704.0
+theme_override_fonts/font = ExtResource("5_i021i")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/fill = SubResource("StyleBoxFlat_ph1s7")
-max_value = 1000.0
+max_value = 1250.0
 value = 1.0
+show_percentage = false
 
 [node name="Tiempo_Reinicio" type="Timer" parent="Oxigeno"]
 wait_time = 3.0
@@ -130,13 +141,14 @@ offset_left = 936.0
 offset_top = 40.0
 offset_right = 1248.0
 offset_bottom = 136.0
-color = Color(0.364706, 0.364706, 0.364706, 0.498039)
+color = Color(0.133333, 0.133333, 0.133333, 0.670588)
 
 [node name="Highscore" type="Label" parent="Score/Highscore"]
 offset_left = 945.0
 offset_top = 52.0
 offset_right = 1241.0
 offset_bottom = 121.0
+theme = ExtResource("7_dm2gk")
 label_settings = SubResource("LabelSettings_ltsvv")
 horizontal_alignment = 1
 script = ExtResource("4_t86mu")
@@ -148,13 +160,14 @@ offset_left = 56.0
 offset_top = 40.0
 offset_right = 368.0
 offset_bottom = 136.0
-color = Color(0.364706, 0.364706, 0.364706, 0.498039)
+color = Color(0.133333, 0.133333, 0.133333, 0.670588)
 
 [node name="Score" type="Label" parent="Score/Score Actual"]
 offset_left = 65.0
 offset_top = 52.0
 offset_right = 361.0
 offset_bottom = 121.0
+theme = ExtResource("7_dm2gk")
 label_settings = SubResource("LabelSettings_ltsvv")
 horizontal_alignment = 1
 script = ExtResource("4_re12h")
@@ -166,6 +179,7 @@ offset_left = 547.0
 offset_top = 52.0
 offset_right = 731.0
 offset_bottom = 140.0
+theme = ExtResource("7_dm2gk")
 label_settings = SubResource("LabelSettings_nxwut")
 horizontal_alignment = 1
 script = ExtResource("6_nxwut")

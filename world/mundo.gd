@@ -19,11 +19,11 @@ func _ready():
 	else:
 		sfx_normalwave.play()
 		
-	wave_spawner_timer.wait_time = 5 - (Global_Player.waves * 1.5)/10
+	wave_spawner_timer.wait_time = max(1, 5 - (Global_Player.waves * 1.5)/10)
 	wave_spawner_timer.start()
-	humans_spawner_timer.wait_time = 4 - (Global_Player.waves)/10
+	humans_spawner_timer.wait_time = max(1, 6 - (Global_Player.waves)/10)
 	humans_spawner_timer.start()
-	powerup_spawner_timer.wait_time = 30 - (Global_Player.waves * 1.20)
+	powerup_spawner_timer.wait_time = max(3, 30 - (Global_Player.waves * 1.20))
 	powerup_spawner_timer.start()
 	animated_sprite_2d.play("default")
 
@@ -34,10 +34,10 @@ func spawn_random_wave():
 	var wave_direction = (randi() % 2)
 	if wave_direction == 0:
 		wave_instance.direccion = wave_instance.direccion * -1 
-		wave_instance.position = Vector2(1280, wave_y)
+		wave_instance.position = Vector2(1300, wave_y)
 	else:
 		wave_instance.direccion = wave_instance.direccion
-		wave_instance.position = Vector2(0, wave_y)
+		wave_instance.position = Vector2(-30, wave_y)
 	
 	add_child(wave_instance)
 

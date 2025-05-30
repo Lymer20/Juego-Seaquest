@@ -1,11 +1,196 @@
-[gd_scene load_steps=5 format=3 uid="uid://8rlms42usa1"]
+[gd_scene load_steps=35 format=3 uid="uid://8rlms42usa1"]
 
+[ext_resource type="Texture2D" uid="uid://cqkinqjq17v10" path="res://sprites/spritesBackgroundGame-Sheet.png" id="1_c2qum"]
+[ext_resource type="Script" uid="uid://v7wvg35fihud" path="res://start/inicio.gd" id="1_fbbfc"]
 [ext_resource type="Script" uid="uid://cx3woj3yf4kw4" path="res://start/boton_inicio.gd" id="1_ylum6"]
 [ext_resource type="AudioStream" uid="uid://bx304cfqddglc" path="res://audio/sfx_menu_fnaf.wav" id="2_8wodb"]
+[ext_resource type="Texture2D" uid="uid://dkj3vmrhk00uc" path="res://sprites/spritesJugador-Sheet.png" id="2_eiwgf"]
+[ext_resource type="FontFile" uid="uid://nxff6b8n0yo2" path="res://font/MightySouly-lxggD.ttf" id="3_ybcyp"]
 [ext_resource type="AudioStream" uid="uid://dymmpo6qhni4q" path="res://audio/sfx_selection.mp3" id="3_yg2l4"]
+[ext_resource type="Theme" uid="uid://8rslk0xauflv" path="res://sprites/buttonTexture/Default_Button.tres" id="4_8fvik"]
+[ext_resource type="Script" uid="uid://diq27e0peg062" path="res://world/scores/highscore.gd" id="5_ybcyp"]
+[ext_resource type="Theme" uid="uid://ptund6jpsjva" path="res://sprites/buttonTexture/Default_Font.tres" id="6_lihsn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ehkv"]
+atlas = ExtResource("1_c2qum")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiwgf"]
+atlas = ExtResource("1_c2qum")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybcyp"]
+atlas = ExtResource("1_c2qum")
+region = Rect2(2560, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8fvik"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ehkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiwgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybcyp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fvik"]
+atlas = ExtResource("2_eiwgf")
+region = Rect2(0, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbbfc"]
+atlas = ExtResource("2_eiwgf")
+region = Rect2(75, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lihsn"]
+atlas = ExtResource("2_eiwgf")
+region = Rect2(150, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mrgs"]
+atlas = ExtResource("2_eiwgf")
+region = Rect2(225, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rph0v"]
+atlas = ExtResource("2_eiwgf")
+region = Rect2(300, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddirg"]
+atlas = ExtResource("2_eiwgf")
+region = Rect2(375, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txpji"]
+atlas = ExtResource("2_eiwgf")
+region = Rect2(0, 65, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhoem"]
+atlas = ExtResource("2_eiwgf")
+region = Rect2(75, 65, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8u80"]
+atlas = ExtResource("2_eiwgf")
+region = Rect2(150, 65, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acufg"]
+atlas = ExtResource("2_eiwgf")
+region = Rect2(225, 65, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5dpb"]
+atlas = ExtResource("2_eiwgf")
+region = Rect2(300, 65, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grytr"]
+atlas = ExtResource("2_eiwgf")
+region = Rect2(375, 65, 75, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ft1o7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fvik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbbfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lihsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mrgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rph0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddirg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txpji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhoem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8u80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acufg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5dpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grytr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Environment" id="Environment_fbbfc"]
+background_mode = 3
+background_energy_multiplier = 1.5
+tonemap_mode = 1
+glow_enabled = true
+glow_intensity = 2.25
+glow_bloom = 0.1
+glow_hdr_threshold = 1.5
+glow_hdr_scale = 2.8
+fog_enabled = true
+fog_light_energy = 1.67
+fog_height = 2.1
+fog_depth_begin = 136.3
+fog_depth_end = 136.3
 
 [sub_resource type="LabelSettings" id="LabelSettings_riyrf"]
 font_size = 100
+font_color = Color(0.737255, 1, 1, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8fvik"]
+font = ExtResource("3_ybcyp")
+font_size = 140
+font_color = Color(0.654902, 1, 0.65098, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ybcyp"]
+font = ExtResource("3_ybcyp")
+font_size = 20
+font_color = Color(0.823529, 1, 1, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fbbfc"]
+font = ExtResource("3_ybcyp")
+font_size = 40
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8mrgs"]
+font_size = 30
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lihsn"]
+font = ExtResource("3_ybcyp")
+font_size = 50
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 5)
 
 [node name="Inicio" type="Control"]
 layout_mode = 3
@@ -14,31 +199,125 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fbbfc")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.226881, 0.23028, 0.239617, 1)
+[node name="Mundo_Fondo" type="Node2D" parent="."]
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mundo_Fondo"]
+position = Vector2(640, 360)
+sprite_frames = SubResource("SpriteFrames_8fvik")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Mundo_Fondo"]
+position = Vector2(624, 359)
+rotation = 3.14159
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_ft1o7")
+frame_progress = 0.159968
+
+[node name="Polygon2D" type="Polygon2D" parent="Mundo_Fondo"]
+position = Vector2(-3760.21, -4936.86)
+scale = Vector2(7.25259, 16.2724)
+color = Color(0, 0.305882, 0.745098, 0.392157)
+polygon = PackedVector2Array(515.686, 316.236, 697.159, 316.236, 697.159, 332.437, 697.159, 348.618, 606.212, 348.618, 515.686, 348.618)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Mundo_Fondo"]
+position = Vector2(-3808, 168)
+scale = Vector2(7.31789, 0.125654)
+color = Color(1, 1, 1, 0.635294)
+polygon = PackedVector2Array(515.686, 316.236, 606.428, 316.236, 684.267, 316.236, 697.159, 316.236, 697.159, 348.618, 515.686, 348.618)
+
+[node name="Color Rects" type="Node" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="Color Rects"]
+offset_left = 160.0
+offset_top = 40.0
+offset_right = 1128.0
+offset_bottom = 360.0
+theme = ExtResource("4_8fvik")
+color = Color(0.225713, 0.61581, 0.586109, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Color Rects"]
+offset_left = 168.0
+offset_top = 48.0
+offset_right = 1120.0
+offset_bottom = 352.0
+theme = ExtResource("4_8fvik")
+color = Color(0.338472, 0.79548, 0.683825, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fbbfc")
+
+[node name="Texto" type="Node" parent="."]
+
+[node name="Seaquest" type="Label" parent="Texto"]
 offset_left = 136.0
-offset_top = 120.0
+offset_top = 72.0
 offset_right = 1153.0
-offset_bottom = 344.0
-text = "EL JUEGO QLIAOOOO"
+offset_bottom = 321.0
+theme_override_fonts/font = ExtResource("3_ybcyp")
+text = "SeaQuest VideoGame
+"
 label_settings = SubResource("LabelSettings_riyrf")
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 194.0
+[node name="Remake" type="Label" parent="Texto"]
+offset_left = 376.0
+offset_top = 168.0
+offset_right = 916.0
+offset_bottom = 340.0
+text = "ReMasTer"
+label_settings = SubResource("LabelSettings_8fvik")
+
+[node name="Creadores" type="Label" parent="Texto"]
+offset_left = -32.0
+offset_top = 632.0
+offset_right = 360.0
+offset_bottom = 711.0
+text = "Creado por:
+Lymer Arteaga y Fernando Mora"
+label_settings = SubResource("LabelSettings_ybcyp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Puntaje" type="Label" parent="Texto"]
+offset_left = 976.0
+offset_top = 496.0
+offset_right = 1143.0
+offset_bottom = 545.0
+text = "HIGHSCORE"
+label_settings = SubResource("LabelSettings_fbbfc")
+
+[node name="Año" type="Label" parent="Texto"]
+offset_left = 944.0
 offset_top = 368.0
-offset_right = 1082.0
-offset_bottom = 592.0
-theme_override_font_sizes/font_size = 100
-text = "MUGA"
+offset_right = 1177.0
+offset_bottom = 417.0
+theme = ExtResource("6_lihsn")
+text = "©2025 LymFer"
+label_settings = SubResource("LabelSettings_8mrgs")
+
+[node name="Jugar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 464.0
+offset_right = 712.0
+offset_bottom = 528.0
+theme = ExtResource("4_8fvik")
+theme_override_fonts/font = ExtResource("3_ybcyp")
+theme_override_font_sizes/font_size = 40
+text = "Jugar"
 script = ExtResource("1_ylum6")
+
+[node name="Salir" type="Button" parent="."]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 560.0
+offset_right = 712.0
+offset_bottom = 624.0
+theme = ExtResource("4_8fvik")
+theme_override_fonts/font = ExtResource("3_ybcyp")
+theme_override_font_sizes/font_size = 40
+text = "Salir"
 
 [node name="sfx_menu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_8wodb")
@@ -49,4 +328,26 @@ autoplay = true
 stream = ExtResource("3_yg2l4")
 volume_db = -10.0
 
-[connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
+[node name="Score" type="Node" parent="."]
+
+[node name="Highscore" type="Node" parent="Score"]
+
+[node name="Color_fondo_highscore" type="ColorRect" parent="Score/Highscore"]
+offset_left = 904.0
+offset_top = 544.0
+offset_right = 1216.0
+offset_bottom = 640.0
+color = Color(0.133333, 0.133333, 0.133333, 0.670588)
+
+[node name="Highscore" type="Label" parent="Score/Highscore"]
+offset_left = 912.0
+offset_top = 560.0
+offset_right = 1208.0
+offset_bottom = 629.0
+label_settings = SubResource("LabelSettings_lihsn")
+horizontal_alignment = 1
+script = ExtResource("5_ybcyp")
+
+[connection signal="mouse_entered" from="Jugar" to="Jugar" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Salir" to="Jugar" method="_on_mouse_entered"]
+[connection signal="pressed" from="Salir" to="Jugar" method="_on_salir_pressed"]

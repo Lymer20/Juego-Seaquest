@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl23nw35yydom"]
+[gd_scene load_steps=6 format=3 uid="uid://dl23nw35yydom"]
 
 [ext_resource type="Script" uid="uid://d3bboshljd73u" path="res://world/pausa.gd" id="1_xxeck"]
 [ext_resource type="AudioStream" uid="uid://dymmpo6qhni4q" path="res://audio/sfx_selection.mp3" id="2_p6qt5"]
+[ext_resource type="Theme" uid="uid://8rslk0xauflv" path="res://sprites/buttonTexture/Default_Button.tres" id="2_p25wt"]
+[ext_resource type="Theme" uid="uid://ptund6jpsjva" path="res://sprites/buttonTexture/Default_Font.tres" id="3_b02j0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_apn6c"]
-font_size = 80
+font_size = 120
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(1, 5)
 
 [node name="Pausa" type="Control"]
 layout_mode = 3
@@ -16,25 +22,34 @@ grow_vertical = 2
 script = ExtResource("1_xxeck")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
-color = Color(0.262932, 0.262932, 0.262932, 0.682353)
+color = Color(0.238427, 0.261373, 0.327625, 0.682353)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 440.0
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 405.0
+offset_top = 96.0
+offset_right = 877.0
+offset_bottom = 608.0
+theme = ExtResource("2_p25wt")
+color = Color(0.225713, 0.61581, 0.586109, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = 413.0
 offset_top = 104.0
-offset_right = 840.0
+offset_right = 869.0
 offset_bottom = 600.0
-color = Color(0.0862745, 0.0862745, 0.0862745, 0.317647)
+theme = ExtResource("2_p25wt")
+color = Color(0.338472, 0.79548, 0.683825, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 512.0
+offset_left = 496.0
 offset_top = 112.0
-offset_right = 770.0
-offset_bottom = 224.0
+offset_right = 792.0
+offset_bottom = 259.0
+theme = ExtResource("3_b02j0")
+theme_override_font_sizes/font_size = 60
 text = "PAUSA"
 label_settings = SubResource("LabelSettings_apn6c")
 
@@ -42,9 +57,11 @@ label_settings = SubResource("LabelSettings_apn6c")
 process_mode = 3
 layout_mode = 0
 offset_left = 512.0
-offset_top = 256.0
+offset_top = 272.0
 offset_right = 768.0
-offset_bottom = 320.0
+offset_bottom = 336.0
+theme = ExtResource("2_p25wt")
+theme_override_font_sizes/font_size = 30
 text = "Continuar"
 
 [node name="Boton_Reinicio" type="Button" parent="."]
@@ -54,15 +71,19 @@ offset_left = 512.0
 offset_top = 384.0
 offset_right = 768.0
 offset_bottom = 448.0
+theme = ExtResource("2_p25wt")
+theme_override_font_sizes/font_size = 30
 text = "Reiniciar"
 
 [node name="Boton_Menu" type="Button" parent="."]
 process_mode = 3
 layout_mode = 0
 offset_left = 512.0
-offset_top = 512.0
+offset_top = 496.0
 offset_right = 768.0
-offset_bottom = 576.0
+offset_bottom = 560.0
+theme = ExtResource("2_p25wt")
+theme_override_font_sizes/font_size = 30
 text = "Menu"
 
 [node name="sfx_selection" type="AudioStreamPlayer" parent="."]

@@ -20,16 +20,19 @@ func _ready():
 
 ## Recomendación: Cambiar este metodo de hacer oleadas con
 ## oleadas ya predeterminadas. Aprender y hacerlo primero con la de los enemigos
+## Update 30/05/2025: Ya está listo, y quedó bien bonito:D
 func spawn_oleada():
 	if humanos_pantalla >= max_humanos:
 		return
 	
 	var probabilidad = randi() % 100
-	var cantidad_humanos = 1
+	var cantidad_humanos: int 
 	
-	if probabilidad < 60:
+	if probabilidad < 50:
+		cantidad_humanos = 1
+	elif probabilidad < 70:
 		cantidad_humanos = 2
-	elif probabilidad < 85:
+	elif probabilidad < 90:
 		cantidad_humanos = 3
 	else:
 		cantidad_humanos = 4

@@ -2,7 +2,7 @@ extends Area2D
 
 @export var dentro_del_area = false
 @export var velocidad_disminucion = 30
-var cantidad_oxigeno: float = 1000
+var cantidad_oxigeno: float = 1250
 var valor_humano: int = 50
 var jugador_path=preload("res://entities/player/jugador.tscn")
 var jugador = jugador_path.instantiate()
@@ -20,17 +20,17 @@ func _process(delta: float) -> void:
 	if not dentro_del_area:
 		cantidad_oxigeno = max(cantidad_oxigeno - velocidad_disminucion * delta, 0)
 	else:
-		cantidad_oxigeno = min(cantidad_oxigeno + (velocidad_disminucion * 2 * delta), 1000)
+		cantidad_oxigeno = min(cantidad_oxigeno + (velocidad_disminucion * 5 * delta), 1250)
 		
-		if cantidad_oxigeno >= 1000:
-			cantidad_oxigeno = 1000
+		if cantidad_oxigeno >= 1250:
+			cantidad_oxigeno = 1250
 			
 	if cantidad_oxigeno <= 0:
 		var jugador = get_node("/root/Mundo/Jugador")
 		if jugador:
 			if Global_Player.health > 1:
 				jugador.take_damage()
-				cantidad_oxigeno = 1000
+				cantidad_oxigeno = 1250
 			else:
 				Global_Player.jugador_muerto = true
 				Global_Player.gameover()
@@ -41,7 +41,7 @@ func _on_body_entered(body: Node) -> void:
 		# Punto medio, donde no logró salvar a todos
 		if Global_Player.salvados > 0 && Global_Player.salvados < 6:
 			Global_Player.salvados -= 1
-			#cantidad_oxigeno = 1000
+			#cantidad_oxigeno = 1250
 			dentro_del_area = true
 		# Punto de siguiente oleada, donde logró salvar a todos
 		elif Global_Player.salvados >= 6:
@@ -65,7 +65,7 @@ func _on_body_entered(body: Node) -> void:
 			# Aumenta el wave y reinicia el oxigeno y los salvados
 			Global_Player.waves += 1
 			Global_Player.salvados = 0
-			cantidad_oxigeno = 1000
+			cantidad_oxigeno = 1250
 			
 			get_tree().paused = true
 			tiempo_reinicio.start()
@@ -82,7 +82,7 @@ func _on_body_entered(body: Node) -> void:
 			
 func _on_body_exited(body: Node) -> void:
 	if body.name == "Jugador":
-		#if cantidad_oxigeno < 1000:
+		#if cantidad_oxigeno < 1250:
 			dentro_del_area = false
 		
 func _on_tiempo_reinicio_timeout() -> void:
