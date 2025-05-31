@@ -1,6 +1,8 @@
 # Seaquest Videogame Remake
 
-Remasterización con fines educativos del clásico Seaquest de Atari 2600. Este proyecto busca mantener la esencia original del juego mientras mejora los gráficos y agrega nuevas funcionalidades para una experiencia más dinámica y envolvente.
+Remasterización con fines educativos del clásico Seaquest de Atari 2600. 
+Este proyecto busca mantener la esencia original del juego mientras mejora los gráficos y agrega nuevas funcionalidades para una experiencia más dinámica y envolvente.
+Hecho para la Universidad Nacional Experimental Rómulo Gallegos, para la materia "Electiva V", profesor: Miguel Hernandez
 
 # Construido con:
 

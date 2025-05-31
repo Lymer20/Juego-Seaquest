@@ -296,6 +296,16 @@ theme = ExtResource("6_lihsn")
 text = "©2025 LymFer"
 label_settings = SubResource("LabelSettings_8mrgs")
 
+[node name="Version" type="Label" parent="Texto"]
+offset_left = 1008.0
+offset_top = 645.0
+offset_right = 1400.0
+offset_bottom = 724.0
+text = "Version: 1.0.0"
+label_settings = SubResource("LabelSettings_ybcyp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Jugar" type="Button" parent="."]
 layout_mode = 0
 offset_left = 544.0
