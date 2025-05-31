@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://b3ty4j5ndkkto"]
+[gd_scene load_steps=60 format=3 uid="uid://b3ty4j5ndkkto"]
 
 [ext_resource type="Script" uid="uid://d3ha2e0rbrexn" path="res://entities/player/jugador.gd" id="1_16k11"]
 [ext_resource type="Texture2D" uid="uid://bpvnh7b65jdlb" path="res://sprites/spritesFunnyDeath.png" id="2_km7nx"]
@@ -10,8 +10,16 @@
 [ext_resource type="AudioStream" uid="uid://bqsxbgu382jou" path="res://audio/sfx_rapidfire.mp3" id="6_1rsaf"]
 [ext_resource type="AudioStream" uid="uid://jsk2ikrofrjh" path="res://audio/sfx_playerbullet.mp3" id="7_km7nx"]
 [ext_resource type="Texture2D" uid="uid://2sjj6xrhewud" path="res://sprites/spriteBuzo_Show.png" id="7_u73j6"]
+[ext_resource type="Script" uid="uid://dev2pkjsy63ux" path="res://entities/player/water_trail.gd" id="8_qitr4"]
 [ext_resource type="AudioStream" uid="uid://b6kdeyvjge5m3" path="res://audio/sfx_death.wav" id="11_u73j6"]
 [ext_resource type="AudioStream" uid="uid://dtx2bf6dhkjyj" path="res://audio/sfx_gethuman.wav" id="12_6ucqf"]
+
+[sub_resource type="Curve" id="Curve_qitr4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qitr4"]
+colors = PackedColorArray(0.0980392, 0.0784314, 0.713726, 0.443137, 0.0509804, 0.0666667, 0.54902, 0.443137)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dpgak"]
 atlas = ExtResource("2_km7nx")
@@ -337,8 +345,22 @@ animations = [{
 collision_layer = 2
 script = ExtResource("1_16k11")
 
+[node name="Water_Trail" type="Line2D" parent="."]
+show_behind_parent = true
+top_level = true
+z_as_relative = false
+width = 20.0
+width_curve = SubResource("Curve_qitr4")
+default_color = Color(0.0980392, 0.0784314, 0.713726, 0.443137)
+gradient = SubResource("Gradient_qitr4")
+texture_mode = 2
+antialiased = true
+script = ExtResource("8_qitr4")
+MAX_LENGTH = 20
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 process_mode = 3
+z_index = 1
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_gwpf3")
 animation = &"moving"
@@ -359,6 +381,7 @@ debug_color = Color(0.884748, 0.00031054, 0.809704, 0.42)
 script = ExtResource("3_yipnj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Arma"]
+z_index = 2
 position = Vector2(2, 5)
 sprite_frames = SubResource("SpriteFrames_dpgak")
 animation = &"not"
