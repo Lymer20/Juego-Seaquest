@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bvxcakdbbuy1p"]
 
-[ext_resource type="Script" path="res://entities/player/game over/game_over.gd" id="1_y26ei"]
+[ext_resource type="Script" uid="uid://c11niutqdn1jk" path="res://entities/player/game over/game_over.gd" id="1_y26ei"]
 [ext_resource type="Theme" uid="uid://8rslk0xauflv" path="res://sprites/buttonTexture/Default_Button.tres" id="2_d53w1"]
 [ext_resource type="Script" uid="uid://diq27e0peg062" path="res://world/scores/highscore.gd" id="2_yxx3c"]
 [ext_resource type="Theme" uid="uid://ptund6jpsjva" path="res://sprites/buttonTexture/Default_Font.tres" id="3_6ghep"]
@@ -69,6 +69,7 @@ offset_bottom = 489.0
 color = Color(0, 0, 0, 0.247059)
 
 [node name="ColorRect3" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
 offset_left = -10.0
 offset_top = -10.0
 offset_right = 694.0
@@ -77,6 +78,7 @@ theme = ExtResource("2_d53w1")
 color = Color(0.225713, 0.61581, 0.586109, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
 offset_left = -2.0
 offset_top = -2.0
 offset_right = 686.0

@@ -32,7 +32,6 @@ func _on_enemy_detect_area_entered(area: Area2D) -> void:
 		velocidad = velocidad * 2
 	
 	if area.name == "player_hurtBox":
-		var personas_salvadas: int = Global_Player.salvados 
 		if Global_Player.salvados < max_rescued:
 			Global_Player.salvados += 1
 			jugador.update_rescued()
@@ -45,7 +44,7 @@ func _on_enemy_detect_area_exited(area: Area2D) -> void:
 	if area.name == "enemy_hitBox" || area.name == "enemy_gun_hitBox":
 		animated_sprite_2d.play("default")
 		velocidad = velocidad / 2
-
+		
 func _on_vuelta_automatica_timeout() -> void:
 	var oportunidad_vuelta = (randi() % 5)
 	if oportunidad_vuelta == 4:

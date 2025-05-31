@@ -13,6 +13,8 @@ func _on_boton_continuar_pressed() -> void:
 	get_tree().paused = false
 
 func _on_boton_reinicio_pressed() -> void:
+	Global_Transicion.transition()
+	await Global_Transicion.on_transition_finished
 	Global_Scoreboard.reset_score = true
 	Global_Player.waves = 0
 	Global_Player.salvados = 0
@@ -21,6 +23,8 @@ func _on_boton_reinicio_pressed() -> void:
 	get_tree().reload_current_scene()
 
 func _on_boton_menu_pressed() -> void:
+	Global_Transicion.transition()
+	await Global_Transicion.on_transition_finished
 	Global_Scoreboard.reset_score = true
 	Global_Player.waves = 0
 	Global_Player.salvados = 0

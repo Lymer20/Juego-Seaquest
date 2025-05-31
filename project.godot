@@ -21,6 +21,7 @@ config/icon="uid://2sjj6xrhewud"
 
 Global_Scoreboard="*res://global/global_scoreboard.gd"
 Global_Player="*res://global/global_player.gd"
+Global_Transicion="*res://global/transicion.tscn"
 
 [display]
 

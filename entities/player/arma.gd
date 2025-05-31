@@ -7,7 +7,7 @@ var disparando = false
 func _ready():
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
 
-func _process(delta):
+func _process(_delta):
 	animated_sprite_2d.flip_h = jugador.animated_sprite_2d.flip_h
 	if Input.is_action_pressed("disparo") and not disparando:
 		disparando = true

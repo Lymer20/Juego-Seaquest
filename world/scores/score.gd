@@ -1,7 +1,7 @@
 extends Label
 @export var current_score: int = 0
 
-func _process(delta):
+func _process(_delta):
 	if Global_Scoreboard.reset_score:
 		Global_Scoreboard.score = 0
 		Global_Scoreboard.reset_score = false

@@ -91,7 +91,7 @@ func update_rescued():
 		humanos.visible = i < Global_Player.salvados
 		
 	if Global_Player.salvados == MAX_RESCUED and parpadeo.get_time_left() == 0:
-			parpadeo.start()
+		parpadeo.start()
 	elif Global_Player.salvados < MAX_RESCUED:
 		parpadeo.stop()
 		humanos_container.visible = true
@@ -232,7 +232,6 @@ func _on_parpadeo_timeout() -> void:
 	humanos_container.visible = !humanos_container.visible
 	
 func _on_reinicio_timeout() -> void:
-
 	get_tree().paused = false
 	respawn()
 	
@@ -240,7 +239,6 @@ func _on_reinicio_timeout() -> void:
 	var vidas_actuales = Global_Player.health
 	
 	Global_Player.salvados = 0
-	
 	get_tree().reload_current_scene()
 	Global_Scoreboard.score = puntaje_actual
 	Global_Player.health = vidas_actuales

@@ -43,8 +43,8 @@ func _on_enemy_s_hit_box_area_entered(area: Area2D) -> void:
 
 func _on_oportunidad_disparo_timeout() -> void:
 	if animated_sprite_2d.animation != "death":
-		var oportunidad_disparo = (randi() % 2)
-		if oportunidad_disparo == 1:
+		var oportunidad_disparo_rng = (randi() % 2)
+		if oportunidad_disparo_rng == 1:
 			sfx_enemybullet.play()
 			disparar()
 

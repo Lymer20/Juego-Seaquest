@@ -6,7 +6,7 @@ var speed: float = 200
 func _ready():
 	global_position=pos
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity=Vector2(speed, 0)
 	move_and_slide()
 

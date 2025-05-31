@@ -22,11 +22,13 @@ grow_vertical = 2
 script = ExtResource("1_xxeck")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0.238427, 0.261373, 0.327625, 0.682353)
 
 [node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 405.0
 offset_top = 96.0
 offset_right = 877.0
@@ -35,6 +37,7 @@ theme = ExtResource("2_p25wt")
 color = Color(0.225713, 0.61581, 0.586109, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 413.0
 offset_top = 104.0
 offset_right = 869.0

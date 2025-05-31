@@ -39,12 +39,12 @@ func _process(delta: float) -> void:
 			cantidad_oxigeno = 1250
 			
 	if cantidad_oxigeno <= 0:
-		var jugador = get_node("/root/Mundo/Jugador")
-		jugador.animated_sprite_2d.play("death")
-		jugador.sfx_funnydeath.play()
-		if jugador:
+		var jugador_node = get_node("/root/Mundo/Jugador")
+		jugador_node.animated_sprite_2d.play("death")
+		jugador_node.sfx_funnydeath.play()
+		if jugador_node:
 			if Global_Player.health > 1:
-				jugador.take_damage()
+				jugador_node.take_damage()
 				cantidad_oxigeno = 1250
 			else:
 				Global_Player.jugador_muerto = true
@@ -74,9 +74,9 @@ func _on_body_entered(body: Node) -> void:
 			for i in range(Global_Player.salvados):
 				Global_Scoreboard.score += score_ganado
 				
-				var jugador = get_node("/root/Mundo/Jugador") 
-				if jugador:
-					jugador.extra_life()
+				var jugador_node = get_node("/root/Mundo/Jugador") 
+				if jugador_node:
+					jugador_node.extra_life()
 
 			# Aumenta el wave y reinicia el oxigeno y los salvados
 			Global_Player.waves += 1
@@ -88,9 +88,9 @@ func _on_body_entered(body: Node) -> void:
 			
 			# Sube a la superficie sin salvar a nadie
 		else:
-			var jugador = get_node("/root/Mundo/Jugador")
-			if jugador:
-				jugador.take_damage()
+			var jugador_node = get_node("/root/Mundo/Jugador")
+			if jugador_node:
+				jugador_node.take_damage()
 			
 			if Global_Player.health <= 0:
 				Global_Player.jugador_muerto = true
