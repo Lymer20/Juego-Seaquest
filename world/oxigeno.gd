@@ -13,7 +13,6 @@ var low_oxygen_bool: bool = false
 
 func _ready():
 	tiempo_reinicio.process_mode = Timer.PROCESS_MODE_ALWAYS
-	print(sfx_lowoxygen)
 
 func low_oxygen():
 	if low_oxygen_bool == true && !sfx_lowoxygen.is_playing():

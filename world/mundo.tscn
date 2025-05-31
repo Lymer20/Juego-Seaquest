@@ -188,12 +188,14 @@ script = ExtResource("6_nxwut")
 [node name="El unico proposito de esto es el efecto bonito, literalmente" type="Node" parent="."]
 
 [node name="Polygon2D" type="Polygon2D" parent="El unico proposito de esto es el efecto bonito, literalmente"]
+z_index = 2
 position = Vector2(-3760.21, -4936.86)
 scale = Vector2(7.25259, 16.2724)
 color = Color(0, 0.305882, 0.745098, 0.392157)
 polygon = PackedVector2Array(515.686, 316.236, 697.159, 316.236, 697.159, 332.437, 697.159, 348.618, 606.212, 348.618, 515.686, 348.618)
 
 [node name="Polygon2D2" type="Polygon2D" parent="El unico proposito de esto es el efecto bonito, literalmente"]
+z_index = 2
 position = Vector2(-3808, 168)
 scale = Vector2(7.31789, 0.125654)
 color = Color(1, 1, 1, 0.635294)
@@ -202,8 +204,10 @@ polygon = PackedVector2Array(515.686, 316.236, 606.428, 316.236, 684.267, 316.23
 [node name="Canvas" type="CanvasLayer" parent="."]
 
 [node name="Pausa" parent="Canvas" instance=ExtResource("8_e4rmm")]
+z_index = 3
 
 [node name="GameOver" parent="Canvas" instance=ExtResource("6_m33u3")]
+z_index = 4
 
 [node name="sfx_hardwave" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_6tgyw")
