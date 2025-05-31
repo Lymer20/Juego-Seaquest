@@ -136,9 +136,7 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	animations_update(movimiento_x)
-	
-	if barra_oxigeno.value == 0.0:
-		death_oxygen()
+
 
 func disparar():
 	if !rapidfire:
@@ -191,12 +189,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	
 	if area.name == "human_areaBox" and Global_Player.salvados < 6:
 		sfx_save.play()
-
-func death_oxygen():
-	if barra_oxigeno.value == 0.0:
-		Global_Player.jugador_muerto = true
-		Global_Player.gameover()
-		queue_free()
 
 func respawn():
 	global_position = Vector2(624, 359)

@@ -15,8 +15,12 @@ func _ready() -> void:
 		max_rescued = jugador.MAX_RESCUED
 
 func _process(delta):
-	
-	position.x += velocidad * direccion * delta
+	var velocidad_final: float
+	if Global_Player.waves >= 25:
+		velocidad_final = 200
+	else:
+		velocidad_final = velocidad
+	position.x += velocidad_final * direccion * delta
 	vuelta_huida()
 
 func _on_sale_de_vista_screen_exited() -> void:

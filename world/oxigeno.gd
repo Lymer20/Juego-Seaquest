@@ -8,14 +8,28 @@ var jugador_path=preload("res://entities/player/jugador.tscn")
 var jugador = jugador_path.instantiate()
 @onready var tiempo_reinicio: Timer = $Tiempo_Reinicio
 @onready var sfx_allsaved: AudioStreamPlayer2D = $"../sfx_allsaved"
-
+@onready var sfx_lowoxygen: AudioStreamPlayer2D = $"../sfx_lowoxygen"
+var low_oxygen_bool: bool = false
 
 func _ready():
 	tiempo_reinicio.process_mode = Timer.PROCESS_MODE_ALWAYS
+	print(sfx_lowoxygen)
+
+func low_oxygen():
+	if low_oxygen_bool == true && !sfx_lowoxygen.is_playing():
+		sfx_lowoxygen.play()
 
 func _process(delta: float) -> void:
 	var progress_bar = get_node("barra de oxigeno/ProgressBar")
 	progress_bar.value = cantidad_oxigeno
+	
+	var estilo_barra = progress_bar.get("theme_override_styles/fill")
+	if cantidad_oxigeno <= 350: 
+		low_oxygen_bool = true
+		estilo_barra.bg_color = Color(1, 0, 0)
+	else:
+		low_oxygen_bool = false
+		estilo_barra.bg_color = Color(0, 1, 0)
 	
 	if not dentro_del_area:
 		cantidad_oxigeno = max(cantidad_oxigeno - velocidad_disminucion * delta, 0)
@@ -27,6 +41,8 @@ func _process(delta: float) -> void:
 			
 	if cantidad_oxigeno <= 0:
 		var jugador = get_node("/root/Mundo/Jugador")
+		jugador.animated_sprite_2d.play("death")
+		jugador.sfx_funnydeath.play()
 		if jugador:
 			if Global_Player.health > 1:
 				jugador.take_damage()
@@ -34,6 +50,7 @@ func _process(delta: float) -> void:
 			else:
 				Global_Player.jugador_muerto = true
 				Global_Player.gameover()
+	low_oxygen()
 
 func _on_body_entered(body: Node) -> void:
 	if body.name == "Jugador":

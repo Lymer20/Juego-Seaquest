@@ -19,11 +19,11 @@ func _ready():
 	else:
 		sfx_normalwave.play()
 		
-	wave_spawner_timer.wait_time = max(1, 5 - (Global_Player.waves * 1.5)/10)
+	wave_spawner_timer.wait_time = max(2, 5 - (Global_Player.waves * 1.5)/10)
 	wave_spawner_timer.start()
-	humans_spawner_timer.wait_time = max(1, 6 - (Global_Player.waves)/10)
+	humans_spawner_timer.wait_time = max(2, 6 - (Global_Player.waves)/10)
 	humans_spawner_timer.start()
-	powerup_spawner_timer.wait_time = max(3, 30 - (Global_Player.waves * 1.20))
+	powerup_spawner_timer.wait_time = max(7, 30 - (Global_Player.waves * 1.10))
 	powerup_spawner_timer.start()
 	animated_sprite_2d.play("default")
 
