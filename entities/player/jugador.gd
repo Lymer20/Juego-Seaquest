@@ -25,6 +25,7 @@ const aceleracion: float = Global_Player.aceleracion
 const friccion: float = Global_Player.friccion
 @onready var sfx_playerbullet: AudioStreamPlayer2D = $sfx_playerbullet
 @onready var sfx_rapidfire: AudioStreamPlayer2D = $sfx_rapidfire
+@onready var parpadeo: Timer = $parpadeo
 
 # Personas a salvar
 var salvados: int = 0
@@ -88,6 +89,12 @@ func update_rescued():
 	for i in range(MAX_RESCUED):
 		var humanos = humanos_container.get_child(i)
 		humanos.visible = i < Global_Player.salvados
+		
+	if Global_Player.salvados == MAX_RESCUED and parpadeo.get_time_left() == 0:
+			parpadeo.start()
+	elif Global_Player.salvados < MAX_RESCUED:
+		parpadeo.stop()
+		humanos_container.visible = true
 
 func _physics_process(delta: float) -> void:
 	humanos_container.visible = Global_Player.salvados > 0
@@ -220,8 +227,10 @@ func animations_update(movimiento_x):
 		animated_sprite_2d.modulate = Color(50, 50, 50)
 	else:
 		animated_sprite_2d.modulate = Color(1, 1,  1)
-
-
+		
+func _on_parpadeo_timeout() -> void:
+	humanos_container.visible = !humanos_container.visible
+	
 func _on_reinicio_timeout() -> void:
 
 	get_tree().paused = false

@@ -224,7 +224,7 @@ volume_db = 10.0
 [connection signal="body_entered" from="Oxigeno" to="Oxigeno" method="_on_body_entered"]
 [connection signal="body_exited" from="Oxigeno" to="Oxigeno" method="_on_body_exited"]
 [connection signal="timeout" from="Oxigeno/Tiempo_Reinicio" to="Oxigeno" method="_on_tiempo_reinicio_timeout"]
-[connection signal="timeout" from="Wave_Spawner" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Wave_Spawner" to="." method="_on_wave_spawner_timeout"]
+[connection signal="timeout" from="Wave_Spawner" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Humans_Spawner" to="." method="_on_humans_spawner_timeout"]
 [connection signal="timeout" from="PowerUp_Spawner" to="." method="_on_power_up_spawner_timeout"]
