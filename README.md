@@ -9,5 +9,5 @@ Remasterización con fines educativos del clásico Seaquest de Atari 2600. Este 
 
 # Integrantes:
 
-Lymer Arteaga CI: 30.790.465
-Fernando Mora CI: 31.423.109
+* Lymer Arteaga CI: 30.790.465
+* Fernando Mora CI: 31.423.109
